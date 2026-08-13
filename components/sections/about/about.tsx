@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Image from "next/image";
-import { HeartHandshake, UserCheck, ShieldCheck, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { HeartHandshake, UserCheck, ShieldCheck, Award, ArrowRight } from "lucide-react";
 
 export function About() {
   const highlights = [
@@ -113,6 +115,16 @@ export function About() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* CTA to /tentang */}
+            <div className="pt-2">
+              <Button variant="outline" size="default" asChild className="rounded-full text-xs sm:text-sm font-semibold hover:border-gold/60">
+                <Link href="/tentang" className="gap-2">
+                  <span>Cerita Selengkapnya Tentang Kalya</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
             </div>
 
           </div>
