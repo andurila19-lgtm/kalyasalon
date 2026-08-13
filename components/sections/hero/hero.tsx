@@ -100,28 +100,22 @@ export function Hero() {
                 />
 
                 {/* Subtle Image Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                {/* Floating Micro Badge in Image */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-3 sm:p-3.5 rounded-lg bg-background/90 backdrop-blur-md border border-white/40 shadow-lg text-left">
-                  <p className="text-[10px] sm:text-[11px] uppercase tracking-widest text-brand-champagne-gold font-bold">
-                    Salon Interior Ambiance
-                  </p>
-                  <p className="text-[11px] sm:text-xs font-medium text-foreground">
-                    Blush Pink & Marble White Luxury Aesthetic
-                  </p>
-                </div>
-              </div>
-
-              {/* Decorative side accent element */}
-              <div className="hidden sm:block absolute -bottom-5 -left-5 bg-background rounded-xl p-3 shadow-xl border border-border">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-brand-soft-pink flex items-center justify-center text-primary font-bold text-xs">
-                    08
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">Lokasi Strategis</p>
-                    <p className="text-xs font-bold text-foreground">Jl. Slamet Riyadi No.8</p>
+                {/* Micro Badge inside image */}
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-background/90 backdrop-blur-md border border-white/40 shadow-lg text-left">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-brand-soft-pink flex items-center justify-center text-primary font-bold text-xs shrink-0">
+                      08
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] uppercase tracking-widest text-brand-champagne-gold font-bold truncate">
+                        Jl. Slamet Riyadi No.8
+                      </p>
+                      <p className="text-[11px] font-medium text-foreground truncate">
+                        Blush Pink & Marble White Studio
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
