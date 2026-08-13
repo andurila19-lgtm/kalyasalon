@@ -67,12 +67,16 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
+    bookings: Booking;
     services: Service;
     categories: Category;
+    staff: Staff;
+    'blocked-times': BlockedTime;
     gallery: Gallery;
     reviews: Review;
     media: Media;
+    'salon-settings': SalonSetting;
+    users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,12 +84,16 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
+    bookings: BookingsSelect<false> | BookingsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    staff: StaffSelect<false> | StaffSelect<true>;
+    'blocked-times': BlockedTimesSelect<false> | BlockedTimesSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'salon-settings': SalonSettingsSelect<false> | SalonSettingsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -126,31 +134,31 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Seluruh data reservasi janji temu pelanggan Kalya Salon.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "bookings".
  */
-export interface User {
+export interface Booking {
   id: number;
-  name: string;
-  role: 'admin' | 'staff';
+  /**
+   * Kode unik tanda bukti booking pelanggan.
+   */
+  bookingCode: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail?: string | null;
+  service: number | Service;
+  staff?: (number | null) | Staff;
+  bookingDate: string;
+  startTime: string;
+  endTime: string;
+  duration: number;
+  totalPrice: number;
+  status: 'CONFIRMED' | 'PENDING' | 'COMPLETED' | 'CANCELLED' | 'NO_SHOW';
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
 }
 /**
  * Kelola menu potong rambut, perawatan spa, smoothing, pewarnaan, dan tarif salon.
@@ -269,6 +277,48 @@ export interface Media {
   };
 }
 /**
+ * Kelola data kapster, penata rambut, dan terapis salon.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff".
+ */
+export interface Staff {
+  id: number;
+  name: string;
+  role?: string | null;
+  photo?: (number | null) | Media;
+  /**
+   * Pilih layanan perawatan yang dapat ditangani oleh staf ini.
+   */
+  services?: (number | Service)[] | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Blokir jam atau tanggal tertentu agar tidak bisa dipesan pelanggan (misal: Maintenance, Istirahat, Acara Khusus).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blocked-times".
+ */
+export interface BlockedTime {
+  id: number;
+  /**
+   * Format tanggal tahun-bulan-hari.
+   */
+  date: string;
+  startTime: string;
+  endTime: string;
+  reason: string;
+  /**
+   * Kosongkan jika blokir berlaku untuk seluruh salon.
+   */
+  staff?: (number | null) | Staff;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Unggah portofolio foto hasil pengerjaan salon (potong rambut, pewarnaan, smoothing, atau suasana interior).
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -335,6 +385,57 @@ export interface Review {
   createdAt: string;
 }
 /**
+ * Atur jam operasional, kapasitas kursi bersamaan, dan interval reservasi salon.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "salon-settings".
+ */
+export interface SalonSetting {
+  id: number;
+  salonName: string;
+  openingTime: string;
+  closingTime: string;
+  /**
+   * Jumlah maksimal pelanggan yang bisa dilayani di jam yang sama.
+   */
+  maxConcurrentCapacity: number;
+  slotIntervalMinutes: number;
+  /**
+   * Jeda waktu minimal sebelum jam yang dipesan (misal 30 menit ke depan).
+   */
+  sameDayLeadTimeMinutes?: number | null;
+  contactPhone?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name: string;
+  role: 'admin' | 'staff';
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -359,8 +460,8 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
+        relationTo: 'bookings';
+        value: number | Booking;
       } | null)
     | ({
         relationTo: 'services';
@@ -369,6 +470,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'staff';
+        value: number | Staff;
+      } | null)
+    | ({
+        relationTo: 'blocked-times';
+        value: number | BlockedTime;
       } | null)
     | ({
         relationTo: 'gallery';
@@ -381,6 +490,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'salon-settings';
+        value: number | SalonSetting;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -426,27 +543,24 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
+ * via the `definition` "bookings_select".
  */
-export interface UsersSelect<T extends boolean = true> {
-  name?: T;
-  role?: T;
+export interface BookingsSelect<T extends boolean = true> {
+  bookingCode?: T;
+  customerName?: T;
+  customerPhone?: T;
+  customerEmail?: T;
+  service?: T;
+  staff?: T;
+  bookingDate?: T;
+  startTime?: T;
+  endTime?: T;
+  duration?: T;
+  totalPrice?: T;
+  status?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -473,6 +587,33 @@ export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   description?: T;
   slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff_select".
+ */
+export interface StaffSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  photo?: T;
+  services?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blocked-times_select".
+ */
+export interface BlockedTimesSelect<T extends boolean = true> {
+  date?: T;
+  startTime?: T;
+  endTime?: T;
+  reason?: T;
+  staff?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -544,6 +685,45 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "salon-settings_select".
+ */
+export interface SalonSettingsSelect<T extends boolean = true> {
+  salonName?: T;
+  openingTime?: T;
+  closingTime?: T;
+  maxConcurrentCapacity?: T;
+  slotIntervalMinutes?: T;
+  sameDayLeadTimeMinutes?: T;
+  contactPhone?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
       };
 }
 /**

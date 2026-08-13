@@ -1,6 +1,6 @@
 /* ==========================================================================
-   KALYA SALON — MASTER LUXURY CMS ADMIN STYLING & COMPLETE REDESIGN
-   ========================================================================= */
+   KALYA SALON — MASTER LUXURY CMS ADMIN STYLING & REALTIME BOOKING ENGINE
+   ========================================================================== */
 
 :root {
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -58,7 +58,7 @@ body, #app-content, .template-default, .dashboard {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hide Default Payload Collection List */
+/* Hide Default Duplicate Collection Boxes */
 .dashboard > .dashboard__group,
 .dashboard > .dashboard__label,
 .dashboard > .dashboard__card-list,
@@ -77,11 +77,11 @@ body, #app-content, .template-default, .dashboard {
   padding: 24px 28px !important;
 }
 
-/* Executive Dashboard */
+/* Executive Dashboard Container */
 .kalya-executive-dashboard {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
   width: 100%;
 }
 
@@ -90,37 +90,26 @@ body, #app-content, .template-default, .dashboard {
   background: linear-gradient(135deg, #241D17 0%, #191410 50%, #100C09 100%);
   border: 1px solid var(--kalya-gold-border);
   border-radius: 16px;
-  padding: 28px 32px;
+  padding: 26px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(201, 164, 92, 0.3);
   position: relative;
   overflow: hidden;
   flex-wrap: wrap;
 }
 
-.kalya-dash-header::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, rgba(201, 164, 92, 0.22) 0%, rgba(201, 164, 92, 0) 70%);
-  pointer-events: none;
-}
-
 .kalya-dash-brand {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .kalya-monogram {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   background: linear-gradient(135deg, #C9A45C 0%, #8E6D2F 100%);
   border-radius: 14px;
   display: flex;
@@ -128,17 +117,17 @@ body, #app-content, .template-default, .dashboard {
   justify-content: center;
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #1A140E;
-  box-shadow: 0 8px 20px rgba(201, 164, 92, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(201, 164, 92, 0.3);
   flex-shrink: 0;
 }
 
 .kalya-brand-subtitle-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 4px;
   flex-wrap: wrap;
 }
 
@@ -151,7 +140,7 @@ body, #app-content, .template-default, .dashboard {
   color: #81C784;
   font-size: 0.68rem;
   font-weight: 700;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: 9999px;
   letter-spacing: 0.05em;
 }
@@ -170,7 +159,7 @@ body, #app-content, .template-default, .dashboard {
 }
 
 .kalya-dash-title {
-  font-size: 1.65rem;
+  font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0 0 4px 0;
@@ -184,7 +173,7 @@ body, #app-content, .template-default, .dashboard {
 }
 
 .kalya-dash-subtitle {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   color: rgba(250, 248, 245, 0.8);
   margin: 0;
@@ -193,7 +182,7 @@ body, #app-content, .template-default, .dashboard {
 
 .kalya-dash-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -201,10 +190,10 @@ body, #app-content, .template-default, .dashboard {
 .kalya-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.84rem;
+  gap: 7px;
+  font-size: 0.82rem;
   font-weight: 600;
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -221,7 +210,6 @@ body, #app-content, .template-default, .dashboard {
 .kalya-action-btn.primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(201, 164, 92, 0.5);
-  background: linear-gradient(135deg, #D8B96C 0%, #C9A45C 100%);
 }
 
 .kalya-action-btn.secondary {
@@ -230,499 +218,467 @@ body, #app-content, .template-default, .dashboard {
   color: #FAF8F5 !important;
 }
 
-.kalya-action-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.14);
+/* Main Section Tab Bar */
+.kalya-main-tab-bar {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid var(--kalya-card-border);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.kalya-main-tab-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-card-border);
+  color: var(--kalya-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kalya-main-tab-item:hover {
+  border-color: var(--kalya-gold-border);
+  color: var(--kalya-text-main);
+}
+
+.kalya-main-tab-item.active {
+  background: linear-gradient(135deg, rgba(201, 164, 92, 0.2) 0%, rgba(142, 109, 47, 0.3) 100%);
   border-color: var(--kalya-gold);
-  transform: translateY(-2px);
+  color: var(--kalya-gold);
+  box-shadow: 0 4px 14px rgba(201, 164, 92, 0.15);
 }
 
-/* Metrics Bar */
-.kalya-metrics-bar {
+/* ==========================================================================
+   BOOKING DASHBOARD & CALENDAR STYLES
+   ========================================================================== */
+
+.kalya-booking-admin-root {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+/* KPI Overview Grid */
+.kalya-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
 }
 
-.kalya-metric-chip {
+.kalya-kpi-card {
   background: var(--kalya-card-bg);
   border: 1px solid var(--kalya-card-border);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: border-color 0.2s ease;
 }
 
-.kalya-metric-chip:hover {
+.kalya-kpi-card:hover {
   border-color: var(--kalya-gold-border);
 }
 
-.kalya-chip-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.kalya-chip-icon.gold {
-  background: rgba(201, 164, 92, 0.2);
-  color: var(--kalya-gold);
-}
-
-.kalya-chip-icon.brown {
-  background: rgba(92, 75, 60, 0.3);
-  color: #E6D4AA;
-}
-
-.kalya-chip-icon.blush {
-  background: rgba(232, 212, 212, 0.2);
-  color: #F3E7E7;
-}
-
-.kalya-chip-label {
-  font-size: 0.78rem;
-  color: var(--kalya-text-muted);
-}
-
-.kalya-chip-val {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--kalya-text-main);
-  margin-left: auto;
-}
-
-/* Section Titles */
-.kalya-section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
-  margin-bottom: 0px;
-}
-
-.kalya-title-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.kalya-gold-icon {
-  color: var(--kalya-gold);
-}
-
-.kalya-section-title h2 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--kalya-text-main);
-  margin: 0;
-}
-
-.kalya-pill-tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--kalya-gold);
-  background: var(--kalya-gold-subtle);
-  border: 1px solid var(--kalya-gold-border);
-  padding: 3px 10px;
-  border-radius: 9999px;
-}
-
-/* Cards Grid */
-.kalya-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.kalya-luxury-card {
-  background: var(--kalya-card-bg);
-  border: 1px solid var(--kalya-card-border);
-  border-radius: 14px;
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.kalya-luxury-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--kalya-gold), transparent);
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
-
-.kalya-luxury-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--kalya-gold);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 164, 92, 0.15);
-}
-
-.kalya-luxury-card:hover::after {
-  opacity: 1;
-}
-
-.kalya-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.kalya-icon-bubble {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.kalya-icon-bubble.gold {
-  background: linear-gradient(135deg, rgba(201, 164, 92, 0.25) 0%, rgba(142, 109, 47, 0.35) 100%);
-  border: 1px solid var(--kalya-gold-border);
-  color: var(--kalya-gold);
-}
-
-.kalya-icon-bubble.espresso {
-  background: linear-gradient(135deg, rgba(92, 75, 60, 0.35) 0%, rgba(46, 35, 25, 0.45) 100%);
-  border: 1px solid rgba(201, 164, 92, 0.2);
-  color: #E6D4AA;
-}
-
-.kalya-icon-bubble.blush {
-  background: linear-gradient(135deg, rgba(232, 212, 212, 0.2) 0%, rgba(140, 92, 92, 0.25) 100%);
-  border: 1px solid rgba(232, 212, 212, 0.25);
-  color: #F3E7E7;
-}
-
-.kalya-icon-bubble.small {
-  width: 38px;
-  height: 38px;
+.kalya-kpi-icon {
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
-}
-
-.kalya-pill-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.18s ease;
-  cursor: pointer;
+  justify-content: center;
 }
 
-.kalya-pill-btn.add {
-  background: rgba(201, 164, 92, 0.12);
-  border: 1px solid var(--kalya-gold-border);
-  color: var(--kalya-gold);
-}
+.kalya-kpi-card.total .kalya-kpi-icon { background: rgba(201, 164, 92, 0.2); color: var(--kalya-gold); }
+.kalya-kpi-card.confirmed .kalya-kpi-icon { background: rgba(46, 125, 50, 0.2); color: #81C784; }
+.kalya-kpi-card.completed .kalya-kpi-icon { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
+.kalya-kpi-card.cancelled .kalya-kpi-icon { background: rgba(211, 47, 47, 0.2); color: #E57373; }
 
-.kalya-pill-btn.add:hover {
-  background: var(--kalya-gold);
-  border-color: var(--kalya-gold);
-  color: #1A140E !important;
-  font-weight: 700;
-}
+.kalya-kpi-label { font-size: 0.76rem; color: var(--kalya-text-muted); font-weight: 500; }
+.kalya-kpi-val { font-size: 1.15rem; font-weight: 700; color: var(--kalya-text-main); margin-top: 2px; }
 
-.kalya-pill-btn.secondary {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--kalya-card-border);
-  color: var(--kalya-text-main);
-}
-
-.kalya-pill-btn.secondary:hover {
-  background: var(--kalya-gold);
-  border-color: var(--kalya-gold);
-  color: #1A140E !important;
-  font-weight: 700;
-}
-
-.kalya-card-info h3 {
-  font-size: 1.08rem;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  color: var(--kalya-text-main);
-}
-
-.kalya-card-info p {
-  font-size: 0.83rem;
-  line-height: 1.45;
-  color: var(--kalya-text-muted);
-  margin: 0 0 16px 0;
-}
-
-.kalya-card-actions {
-  border-top: 1px solid var(--kalya-card-border);
-  padding-top: 14px;
-}
-
-.kalya-manage-link {
+/* Calendar Toolbar */
+.kalya-calendar-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--kalya-gold);
-  text-decoration: none;
-  transition: all 0.18s ease;
-}
-
-.kalya-manage-link:hover {
-  color: var(--kalya-gold-hover);
-  transform: translateX(2px);
-}
-
-/* Interactive Owner Guide Box */
-.kalya-guide-box {
+  gap: 14px;
   background: var(--kalya-card-bg);
-  border: 1px solid var(--kalya-gold-border);
-  border-radius: 14px;
-  padding: 22px 24px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-  margin-top: 4px;
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 12px;
+  padding: 12px 18px;
+  flex-wrap: wrap;
 }
 
-.kalya-guide-header {
-  margin-bottom: 16px;
-}
-
-.kalya-guide-title {
+.kalya-toolbar-left, .kalya-toolbar-right {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.kalya-guide-title h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--kalya-text-main);
-  margin: 0 0 4px 0;
-}
-
-.kalya-guide-title p {
-  font-size: 0.82rem;
-  color: var(--kalya-text-muted);
-  margin: 0;
-}
-
-.kalya-guide-tabs {
-  display: flex;
+  align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--kalya-card-border);
-  padding-bottom: 12px;
 }
 
-.kalya-tab-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--kalya-card-border);
-  color: var(--kalya-text-main);
-  padding: 7px 14px;
+.kalya-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kalya-card-border);
+  color: var(--kalya-text-main);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.kalya-tab-btn:hover {
+.kalya-tool-btn:hover {
   background: rgba(201, 164, 92, 0.15);
   border-color: var(--kalya-gold-border);
 }
 
-.kalya-tab-btn.active {
+.kalya-tool-btn.primary {
   background: var(--kalya-gold);
   border-color: var(--kalya-gold);
   color: #140E0A !important;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(201, 164, 92, 0.3);
 }
 
-.kalya-guide-content {
-  background: rgba(0, 0, 0, 0.15);
+.kalya-date-input {
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--kalya-card-border);
-  border-radius: 10px;
-  padding: 16px 18px;
+  border-radius: 8px;
+  color: var(--kalya-text-main);
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-family: inherit;
 }
 
-.kalya-step-list {
+.kalya-search-box {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 8px;
+  padding: 6px 12px;
 }
 
-.kalya-step-item {
+.kalya-search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  color: var(--kalya-text-main);
+  width: 180px;
+}
+
+/* Schedule Layout Container */
+.kalya-schedule-container {
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.kalya-schedule-header {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 0.84rem;
-  line-height: 1.5;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--kalya-card-border);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.kalya-schedule-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
   color: var(--kalya-text-main);
 }
 
-.kalya-step-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--kalya-gold);
-  color: #140E0A;
-  font-size: 0.75rem;
+.kalya-gold-text { color: var(--kalya-gold); }
+
+.kalya-count-badge {
+  font-size: 0.74rem;
   font-weight: 700;
+  background: var(--kalya-gold-subtle);
+  border: 1px solid var(--kalya-gold-border);
+  color: var(--kalya-gold);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+/* Hourly Rows */
+.kalya-hourly-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kalya-hour-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 14px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+  padding-bottom: 10px;
+}
+
+.kalya-hour-time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--kalya-gold);
+  padding-top: 6px;
+}
+
+.kalya-hour-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 48px;
+}
+
+.kalya-empty-hour-slot {
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+}
+
+.kalya-slot-available-tag {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 500;
+}
+
+.kalya-blocked-slot-chip {
+  background: rgba(211, 47, 47, 0.15);
+  border: 1px solid rgba(211, 47, 47, 0.3);
+  color: #E57373;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Booking Card Item in Calendar */
+.kalya-booking-card-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kalya-booking-card-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--kalya-gold);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 12px rgba(201, 164, 92, 0.12);
+}
+
+.kalya-booking-card-item.confirmed { border-left: 3px solid #81C784; }
+.kalya-booking-card-item.completed { border-left: 3px solid #64B5F6; }
+.kalya-booking-card-item.cancelled { border-left: 3px solid #E57373; opacity: 0.6; }
+.kalya-booking-card-item.no_show { border-left: 3px solid #FFB74D; }
+
+.kalya-card-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kalya-booking-code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--kalya-gold);
+}
+
+.kalya-status-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.kalya-status-badge.confirmed { background: rgba(76, 175, 80, 0.2); color: #81C784; }
+.kalya-status-badge.completed { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
+.kalya-status-badge.cancelled { background: rgba(244, 67, 54, 0.2); color: #E57373; }
+.kalya-status-badge.no_show { background: rgba(255, 152, 0, 0.2); color: #FFB74D; }
+
+.kalya-customer-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--kalya-text-main);
+}
+
+.kalya-service-name, .kalya-time-interval {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: var(--kalya-text-muted);
+}
+
+/* Modals & Backdrops */
+.kalya-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
+  padding: 20px;
 }
 
-.kalya-code {
-  background: rgba(201, 164, 92, 0.2);
-  color: var(--kalya-gold);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.82rem;
-}
-
-/* Secondary Compact Cards */
-.kalya-secondary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 14px;
-}
-
-.kalya-compact-card {
+.kalya-drawer-content, .kalya-modal-content {
   background: var(--kalya-card-bg);
-  border: 1px solid var(--kalya-card-border);
-  border-radius: 12px;
-  padding: 16px 20px;
+  border: 1px solid var(--kalya-gold-border);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kalya-drawer-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--kalya-card-border);
+  padding-bottom: 14px;
 }
 
-.kalya-compact-card:hover {
-  border-color: var(--kalya-gold-border);
-  transform: translateY(-2px);
-}
+.kalya-drawer-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--kalya-gold); }
+.kalya-drawer-header h2 { font-size: 1.3rem; margin: 4px 0 0 0; color: var(--kalya-text-main); font-family: var(--font-mono); }
+.kalya-close-btn { background: none; border: none; font-size: 1.2rem; color: var(--kalya-text-muted); cursor: pointer; }
 
-.kalya-compact-left {
+.kalya-detail-section {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kalya-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.84rem;
+}
+
+.kalya-detail-row .label { color: var(--kalya-text-muted); }
+.kalya-detail-row .val { color: var(--kalya-text-main); }
+.kalya-wa-link { color: #81C784; text-decoration: none; font-weight: 600; }
+
+.kalya-drawer-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--kalya-card-border);
+}
+
+.kalya-btn-action {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-}
-
-.kalya-compact-left h4 {
-  font-size: 0.94rem;
-  font-weight: 600;
-  margin: 0 0 2px 0;
-  color: var(--kalya-text-main);
-}
-
-.kalya-compact-left p {
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 8px;
   font-size: 0.78rem;
-  color: var(--kalya-text-muted);
-  margin: 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
 }
 
-/* Website Shortcuts Bar */
-.kalya-website-bar {
-  background: rgba(201, 164, 92, 0.08);
-  border: 1px solid var(--kalya-gold-border);
+.kalya-btn-action.complete { background: rgba(76, 175, 80, 0.2); color: #81C784; border-color: rgba(76, 175, 80, 0.4); }
+.kalya-btn-action.reschedule { background: rgba(201, 164, 92, 0.2); color: var(--kalya-gold); border-color: var(--kalya-gold-border); }
+.kalya-btn-action.cancel { background: rgba(244, 67, 54, 0.2); color: #E57373; border-color: rgba(244, 67, 54, 0.4); }
+.kalya-btn-action.noshow { background: rgba(255, 152, 0, 0.2); color: #FFB74D; border-color: rgba(255, 152, 0, 0.4); }
+
+.kalya-btn-action:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.2); }
+
+/* Form inputs in Modal */
+.kalya-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kalya-form-group label { font-size: 0.78rem; font-weight: 600; color: var(--kalya-text-muted); }
+.kalya-form-group input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--kalya-text-main);
+  font-size: 0.85rem;
+}
+
+.kalya-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.kalya-modal-buttons button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.kalya-modal-buttons .cancel { background: transparent; border: 1px solid var(--kalya-card-border); color: var(--kalya-text-muted); }
+.kalya-modal-buttons .submit { background: var(--kalya-gold); border: 1px solid var(--kalya-gold); color: #140E0A; font-weight: 700; }
+
+/* Toast Notification */
+.kalya-toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #241D17 0%, #191410 100%);
+  border: 1px solid var(--kalya-gold);
   border-radius: 12px;
   padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.kalya-website-bar-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--kalya-gold);
-  white-space: nowrap;
-}
-
-.kalya-website-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.kalya-website-links a {
-  font-size: 0.82rem;
-  font-weight: 600;
   color: var(--kalya-text-main);
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid var(--kalya-card-border);
-  transition: all 0.15s ease;
-}
-
-.kalya-website-links a:hover {
-  background: var(--kalya-gold);
-  border-color: var(--kalya-gold);
-  color: #1A140E !important;
-}
-
-/* Footer Status */
-.kalya-dash-footer {
-  border-top: 1px solid var(--kalya-card-border);
-  padding-top: 18px;
-  margin-top: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 0.78rem;
-  color: var(--kalya-text-muted);
-}
-
-.kalya-footer-item {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 164, 92, 0.2);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  z-index: 10000;
+  animation: slideUp 0.3s ease-out;
 }
 
-.kalya-footer-divider {
-  width: 1px;
-  height: 16px;
-  background: var(--kalya-card-border);
-}
-
-@media (max-width: 768px) {
-  .kalya-footer-divider {
-    display: none;
-  }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

@@ -10,6 +10,10 @@ import { Categories } from "./collections/Categories";
 import { Gallery } from "./collections/Gallery";
 import { Reviews } from "./collections/Reviews";
 import { Media } from "./collections/Media";
+import { Bookings } from "./collections/Bookings";
+import { Staff } from "./collections/Staff";
+import { BlockedTimes } from "./collections/BlockedTimes";
+import { SalonSettings } from "./collections/SalonSettings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -27,7 +31,18 @@ export default buildConfig({
       beforeDashboard: ["@/components/admin/DashboardHero#DashboardHero"],
     },
   },
-  collections: [Users, Services, Categories, Gallery, Reviews, Media],
+  collections: [
+    Bookings,
+    Services,
+    Categories,
+    Staff,
+    BlockedTimes,
+    Gallery,
+    Reviews,
+    Media,
+    SalonSettings,
+    Users,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "kalya-salon-madiun-ultra-secure-payload-secret-key-2026",
   typescript: {
