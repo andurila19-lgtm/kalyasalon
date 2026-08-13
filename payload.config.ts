@@ -23,6 +23,9 @@ export default buildConfig({
     meta: {
       titleSuffix: "• Kalya Salon Admin",
     },
+    components: {
+      beforeDashboard: ["@/components/admin/DashboardHero#DashboardHero"],
+    },
   },
   collections: [Users, Services, Categories, Gallery, Reviews, Media],
   editor: lexicalEditor(),

@@ -1,17 +1,12 @@
 /* ==========================================================================
-   KALYA SALON — PREMIUM & LIGHTWEIGHT CMS ADMIN THEME
-   Design System: Warm Ivory, Champagne Gold, Deep Espresso, Crisp Elevation
+   KALYA SALON — EXECUTIVE CMS ADMIN THEME & DASHBOARD STYLING
+   Palet: Warm Ivory, Champagne Gold, Deep Espresso, Crisp Elevation
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. COLOR TOKENS & SYSTEM VARIABLES
-   -------------------------------------------------------------------------- */
 :root {
-  /* Font Family */
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Base Geometry */
   --style-radius-s: 8px;
   --style-radius-m: 12px;
   --style-radius-l: 16px;
@@ -24,9 +19,8 @@
   --kalya-espresso: #3E3024;
   --kalya-espresso-soft: #5C4B3C;
   --kalya-blush: #F4ECE8;
-  --kalya-border: #E8E2D8;
 
-  /* Light Theme (Default: Clean Warm Ivory Luxury) */
+  /* Light Theme */
   --theme-bg: #FAF8F5;
   --theme-text: #26211D;
   --theme-input-bg: #FFFFFF;
@@ -42,24 +36,8 @@
   --theme-elevation-400: #5C4B3C;
   --theme-elevation-450: #46382C;
   --theme-elevation-500: #3E3024;
-  --theme-elevation-550: #2E2319;
-  --theme-elevation-600: #231A13;
-  --theme-elevation-650: #1B130E;
-  --theme-elevation-700: #140E0A;
-  --theme-elevation-750: #0D0906;
-  --theme-elevation-800: #080504;
-  --theme-elevation-850: #000000;
-  --theme-elevation-900: #000000;
-  --theme-elevation-950: #000000;
-  --theme-elevation-1000: #000000;
-
-  /* Status Colors */
-  --theme-success-500: #2E7D32;
-  --theme-error-500: #D32F2F;
-  --theme-warning-500: #C9A45C;
 }
 
-/* Dark Theme (Obsidian & Warm Gold) */
 [data-theme="dark"] {
   --theme-bg: #141210;
   --theme-text: #F7F4F0;
@@ -76,139 +54,440 @@
   --theme-elevation-400: #E6D4AA;
   --theme-elevation-450: #F0E6CE;
   --theme-elevation-500: #F7F4F0;
-  --theme-elevation-550: #FAF8F5;
-  --theme-elevation-600: #FFFFFF;
-
-  --kalya-border: #332B24;
 }
 
-/* --------------------------------------------------------------------------
-   2. GLOBAL TYPOGRAPHY & SMOOTH PERFORMANCE
-   -------------------------------------------------------------------------- */
 body, #app-content, .template-default, .dashboard {
   font-family: var(--font-body) !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
 }
 
-/* --------------------------------------------------------------------------
-   3. NAVIGATION & SIDEBAR BRANDING
-   -------------------------------------------------------------------------- */
-.nav {
-  background: var(--theme-elevation-0) !important;
-  border-right: 1px solid var(--theme-elevation-150) !important;
+/* ==========================================================================
+   CUSTOM DASHBOARD HERO & STATS SYSTEM
+   ========================================================================== */
+
+.kalya-admin-dashboard {
+  margin-bottom: 28px;
+  width: 100%;
 }
 
-/* Salon Header in Nav */
-.nav__brand {
-  padding: 24px 20px 20px !important;
-  border-bottom: 1px solid var(--theme-elevation-100) !important;
+/* 1. Executive Banner */
+.kalya-hero-banner {
+  background: linear-gradient(135deg, #3E3024 0%, #261D15 60%, #1B140E 100%);
+  border-radius: var(--style-radius-l);
+  padding: 32px 36px;
+  color: #FAF8F5;
+  box-shadow: 0 12px 32px -8px rgba(38, 29, 21, 0.4), 0 0 0 1px rgba(201, 164, 92, 0.2);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav-group__label {
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  color: var(--theme-elevation-350) !important;
-  padding: 18px 20px 6px !important;
+.kalya-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(201, 164, 92, 0.25) 0%, rgba(201, 164, 92, 0) 70%);
+  pointer-events: none;
 }
 
-.nav-group .nav__link {
-  border-radius: var(--style-radius-s) !important;
-  margin: 3px 12px !important;
-  padding: 9px 14px !important;
-  font-size: 0.88rem !important;
-  font-weight: 500 !important;
-  color: var(--theme-text) !important;
-  transition: all 0.15s ease-out !important;
+.kalya-hero-banner-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
-.nav-group .nav__link:hover {
-  background: var(--theme-elevation-100) !important;
-  color: var(--theme-elevation-500) !important;
-  transform: translateX(2px);
+.kalya-hero-content {
+  max-width: 620px;
 }
 
-.nav-group .nav__link.active {
-  background: var(--theme-elevation-150) !important;
-  color: var(--theme-elevation-500) !important;
-  font-weight: 600 !important;
-  box-shadow: inset 3px 0 0 var(--kalya-gold) !important;
+.kalya-badge-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
-[data-theme="dark"] .nav-group .nav__link.active {
-  background: var(--theme-elevation-100) !important;
-  box-shadow: inset 3px 0 0 var(--kalya-gold) !important;
+.kalya-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
 }
 
-/* --------------------------------------------------------------------------
-   4. DASHBOARD & COLLECTION CARDS (CLEAN & LIGHTWEIGHT)
-   -------------------------------------------------------------------------- */
+.kalya-status-pill.online {
+  background: rgba(46, 125, 50, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #81C784;
+}
+
+.kalya-status-pill.location {
+  background: rgba(201, 164, 92, 0.15);
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  color: #E6D4AA;
+}
+
+.kalya-ping-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+}
+
+.kalya-hero-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px 0;
+  color: #FFFFFF;
+}
+
+.kalya-gold-text {
+  color: var(--kalya-gold);
+}
+
+.kalya-hero-subtitle {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(250, 248, 245, 0.82);
+  margin: 0;
+}
+
+.kalya-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.kalya-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--style-radius-s);
+  text-decoration: none;
+  transition: all 0.18s ease-out;
+  cursor: pointer;
+}
+
+.kalya-btn-primary {
+  background: var(--kalya-gold);
+  color: #1A1614 !important;
+  box-shadow: 0 4px 14px rgba(201, 164, 92, 0.35);
+}
+
+.kalya-btn-primary:hover {
+  background: var(--kalya-gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(201, 164, 92, 0.45);
+}
+
+.kalya-btn-outline {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FAF8F5 !important;
+}
+
+.kalya-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* 2. Section Heading */
+.kalya-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.kalya-section-header.payload-divider {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--theme-elevation-150);
+}
+
+.kalya-section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalya-section-icon {
+  color: var(--kalya-gold);
+}
+
+.kalya-section-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--theme-elevation-500);
+  margin: 0;
+}
+
+.kalya-section-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kalya-gold);
+  background: rgba(201, 164, 92, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* 3. Stats & Action Grid */
+.kalya-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kalya-stat-card {
+  background: var(--theme-elevation-0);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-m);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.kalya-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--kalya-gold);
+  box-shadow: 0 8px 24px -4px rgba(201, 164, 92, 0.2), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.kalya-stat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.kalya-stat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--style-radius-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kalya-stat-icon-box.gold {
+  background: rgba(201, 164, 92, 0.14);
+  color: #B89248;
+}
+
+.kalya-stat-icon-box.brown {
+  background: rgba(62, 48, 36, 0.1);
+  color: #5C4B3C;
+}
+
+.kalya-stat-icon-box.blush {
+  background: rgba(232, 212, 212, 0.4);
+  color: #8C5C5C;
+}
+
+[data-theme="dark"] .kalya-stat-icon-box.gold {
+  background: rgba(201, 164, 92, 0.2);
+  color: #D8B96C;
+}
+
+[data-theme="dark"] .kalya-stat-icon-box.brown {
+  background: rgba(201, 164, 92, 0.15);
+  color: #E6D4AA;
+}
+
+[data-theme="dark"] .kalya-stat-icon-box.blush {
+  background: rgba(232, 212, 212, 0.15);
+  color: #F3E7E7;
+}
+
+.kalya-add-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--theme-elevation-100);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-s);
+  color: var(--theme-text);
+  text-decoration: none;
+  transition: all 0.15s ease-out;
+}
+
+.kalya-add-shortcut:hover {
+  background: var(--kalya-gold);
+  border-color: var(--kalya-gold);
+  color: #FFFFFF !important;
+}
+
+.kalya-stat-body {
+  flex: 1;
+}
+
+.kalya-stat-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--theme-text);
+}
+
+.kalya-stat-desc {
+  font-size: 0.82rem;
+  color: var(--theme-elevation-400);
+  margin: 0 0 16px 0;
+  line-height: 1.45;
+}
+
+.kalya-stat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--theme-elevation-100);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--kalya-gold);
+  text-decoration: none;
+  transition: color 0.15s ease-out;
+}
+
+.kalya-stat-footer:hover {
+  color: var(--kalya-gold-hover);
+}
+
+.kalya-arrow {
+  transition: transform 0.15s ease-out;
+}
+
+.kalya-stat-card:hover .kalya-arrow {
+  transform: translateX(4px);
+}
+
+/* 4. Information Banner */
+.kalya-info-banner {
+  background: var(--theme-elevation-50);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-m);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.kalya-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kalya-info-icon {
+  color: var(--kalya-gold);
+  flex-shrink: 0;
+}
+
+.kalya-info-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--theme-elevation-400);
+  margin-bottom: 2px;
+}
+
+.kalya-info-val {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--theme-text);
+}
+
+.kalya-info-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--theme-elevation-150);
+}
+
+@media (max-width: 768px) {
+  .kalya-info-divider {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   POLISH PAYLOAD'S DEFAULT COLLECTION CARDS (MAKE THEM GORGEOUS)
+   ========================================================================== */
+
 .dashboard {
-  max-width: 1180px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
-  padding: 36px 32px !important;
+  padding: 32px 28px !important;
 }
 
 .dashboard__label {
-  font-size: 1.15rem !important;
+  font-size: 1.1rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
   color: var(--theme-elevation-500) !important;
-  margin-top: 28px !important;
-  margin-bottom: 14px !important;
-  padding-bottom: 8px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 6px !important;
   border-bottom: 1px solid var(--theme-elevation-150) !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.dashboard__label::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 16px;
-  background: var(--kalya-gold);
-  border-radius: 2px;
 }
 
 .dashboard__card-list {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-  gap: 16px !important;
+  gap: 14px !important;
 }
 
-/* Lightweight Elegant Card */
 .card {
   background: var(--theme-elevation-0) !important;
   border: 1px solid var(--theme-elevation-150) !important;
   border-radius: var(--style-radius-m) !important;
-  padding: 20px 22px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
-  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out !important;
-  text-decoration: none !important;
-  position: relative !important;
-  overflow: hidden !important;
+  padding: 16px 18px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.18s ease-out !important;
 }
 
 .card:hover {
   transform: translateY(-2px) !important;
   border-color: var(--kalya-gold) !important;
-  box-shadow: 0 8px 24px -4px rgba(201, 164, 92, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 8px 20px -4px rgba(201, 164, 92, 0.15) !important;
 }
 
 .card__title {
-  font-size: 1rem !important;
   font-weight: 600 !important;
+  font-size: 0.95rem !important;
   color: var(--theme-text) !important;
-  margin-bottom: 4px !important;
 }
 
-/* Create New Button in Card */
 .card__actions button,
 .card .btn--icon {
   background: var(--theme-elevation-100) !important;
@@ -223,204 +502,4 @@ body, #app-content, .template-default, .dashboard {
   background: var(--kalya-gold) !important;
   border-color: var(--kalya-gold) !important;
   color: #FFFFFF !important;
-}
-
-/* --------------------------------------------------------------------------
-   5. BUTTONS (LUXURY FINISH & INSTANT FEEDBACK)
-   -------------------------------------------------------------------------- */
-.btn {
-  border-radius: var(--style-radius-s) !important;
-  font-weight: 600 !important;
-  font-size: 0.875rem !important;
-  letter-spacing: 0.01em !important;
-  padding: 9px 18px !important;
-  transition: all 0.15s ease-out !important;
-}
-
-/* Primary Salon Gold Action */
-.btn--style-primary {
-  background: #3E3024 !important;
-  color: #FAF8F5 !important;
-  border: 1px solid #3E3024 !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
-}
-
-.btn--style-primary:hover {
-  background: #261D15 !important;
-  border-color: #261D15 !important;
-  box-shadow: 0 4px 14px rgba(62, 48, 36, 0.25) !important;
-  transform: translateY(-1px) !important;
-}
-
-[data-theme="dark"] .btn--style-primary {
-  background: var(--kalya-gold) !important;
-  color: #1A1614 !important;
-  border-color: var(--kalya-gold) !important;
-}
-
-[data-theme="dark"] .btn--style-primary:hover {
-  background: var(--kalya-gold-hover) !important;
-  border-color: var(--kalya-gold-hover) !important;
-  box-shadow: 0 4px 14px rgba(201, 164, 92, 0.3) !important;
-}
-
-/* Secondary Button */
-.btn--style-secondary {
-  background: var(--theme-elevation-0) !important;
-  border: 1px solid var(--theme-elevation-200) !important;
-  color: var(--theme-text) !important;
-}
-
-.btn--style-secondary:hover {
-  background: var(--theme-elevation-100) !important;
-  border-color: var(--kalya-gold) !important;
-}
-
-/* --------------------------------------------------------------------------
-   6. FORM INPUTS & FIELD EDITING
-   -------------------------------------------------------------------------- */
-.field-type {
-  margin-bottom: 22px !important;
-}
-
-.field-type label {
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  color: var(--theme-elevation-450) !important;
-  margin-bottom: 6px !important;
-}
-
-.field-description {
-  font-size: 0.78rem !important;
-  color: var(--theme-elevation-350) !important;
-  margin-top: 4px !important;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="url"],
-input[type="search"],
-textarea,
-select,
-.react-select__control {
-  background: var(--theme-input-bg) !important;
-  border: 1px solid var(--theme-elevation-200) !important;
-  border-radius: var(--style-radius-s) !important;
-  color: var(--theme-text) !important;
-  padding: 10px 14px !important;
-  font-size: 0.92rem !important;
-  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
-}
-
-input:focus,
-textarea:focus,
-select:focus,
-.react-select__control--is-focused {
-  border-color: var(--kalya-gold) !important;
-  box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.15) !important;
-  outline: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   7. LIST TABLES & DATA TABLES
-   -------------------------------------------------------------------------- */
-.collection-list {
-  max-width: 1280px !important;
-  margin: 0 auto !important;
-  padding: 24px 32px !important;
-}
-
-.table {
-  background: var(--theme-elevation-0) !important;
-  border: 1px solid var(--theme-elevation-150) !important;
-  border-radius: var(--style-radius-m) !important;
-  overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
-}
-
-.table th {
-  background: var(--theme-elevation-50) !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: var(--theme-elevation-400) !important;
-  border-bottom: 1px solid var(--theme-elevation-150) !important;
-  padding: 14px 16px !important;
-}
-
-.table td {
-  padding: 14px 16px !important;
-  border-bottom: 1px solid var(--theme-elevation-100) !important;
-  font-size: 0.88rem !important;
-}
-
-.table tr:hover td {
-  background: var(--theme-elevation-50) !important;
-}
-
-/* --------------------------------------------------------------------------
-   8. LOGIN & FIRST USER SETUP PORTAL
-   -------------------------------------------------------------------------- */
-.login,
-.create-first-user {
-  background: radial-gradient(circle at top right, #F7F0E6 0%, #FAF8F5 45%, #F4EDE4 100%) !important;
-  min-height: 100vh !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-[data-theme="dark"] .login,
-[data-theme="dark"] .create-first-user {
-  background: radial-gradient(circle at top right, #241F1A 0%, #141210 50%, #1C1814 100%) !important;
-}
-
-.login__form,
-.create-first-user__form {
-  background: var(--theme-elevation-0) !important;
-  border: 1px solid var(--theme-elevation-150) !important;
-  border-radius: var(--style-radius-l) !important;
-  padding: 44px 40px !important;
-  box-shadow: 0 20px 48px -12px rgba(62, 48, 36, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-  max-width: 440px !important;
-  width: 100% !important;
-}
-
-[data-theme="dark"] .login__form,
-[data-theme="dark"] .create-first-user__form {
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--theme-elevation-150) !important;
-}
-
-.login__header h1,
-.create-first-user__header h1 {
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em !important;
-  color: var(--theme-elevation-500) !important;
-  text-align: center !important;
-}
-
-/* --------------------------------------------------------------------------
-   9. SCROLLBAR & SLICK POLISH
-   -------------------------------------------------------------------------- */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--theme-elevation-200);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--kalya-gold);
 }
