@@ -19,6 +19,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL || "https://kalyasalon.vercel.app",
   admin: {
     user: Users.slug,
     importMap: {
@@ -28,7 +29,14 @@ export default buildConfig({
       titleSuffix: "• Kalya Salon Control Center",
     },
     components: {
+      beforeNavLinks: ["@/components/admin/SidebarNavLinks#SidebarNavLinks"],
       beforeDashboard: ["@/components/admin/DashboardHero#DashboardHero"],
+      views: {
+        bookingCalendar: {
+          Component: "@/components/admin/BookingCalendarView#BookingCalendarView",
+          path: "/booking-calendar",
+        },
+      },
     },
   },
   collections: [
