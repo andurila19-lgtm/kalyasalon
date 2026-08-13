@@ -8,8 +8,7 @@ import {
   ExternalLink,
   MessageCircle,
   ArrowLeft,
-  LayoutDashboard,
-  Sparkles
+  LayoutDashboard
 } from "lucide-react";
 
 export const BookingCalendarView: React.FC = () => {

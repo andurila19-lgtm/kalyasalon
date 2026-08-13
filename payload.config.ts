@@ -60,7 +60,9 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "postgresql://postgres:YMJ2U%2AnhTtU%246We@db.pbjaeuhfubmwqczfmnli.supabase.co:5432/postgres",
+      connectionString:
+        process.env.DATABASE_URI ||
+        "postgresql://postgres.pbjaeuhfubmwqczfmnli:YMJ2U%2AnhTtU%246We@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres",
       ssl: {
         rejectUnauthorized: false,
       },
