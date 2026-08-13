@@ -63,23 +63,61 @@ export async function createBookingAtomically(
     notes,
   } = params;
 
-  // Basic validation
-  if (!customerName || !customerPhone || !serviceId || !bookingDate || !startTime) {
+  // 1. Strict Name Validation (Only letters, spaces, dots, apostrophes, min 3 chars)
+  const trimmedName = customerName?.trim() || "";
+  const nameRegex = /^[a-zA-Z\s'.]{3,60}$/;
+  if (!nameRegex.test(trimmedName)) {
     return {
       success: false,
-      message: "Data pemesanan tidak lengkap. Mohon lengkapi seluruh formulir.",
+      message: "Nama lengkap hanya boleh berisi huruf dan minimal 3 karakter.",
+      error: "INVALID_NAME_FORMAT",
+    };
+  }
+
+  // 2. Strict Phone Validation (Only Indonesian mobile digits starting with 08 or 628, 10-14 digits)
+  const cleanPhone = (customerPhone || "").replace(/\D/g, "");
+  const phoneRegex = /^(08|628)[0-9]{8,12}$/;
+  if (!phoneRegex.test(cleanPhone)) {
+    return {
+      success: false,
+      message: "Nomor WhatsApp tidak valid. Gunakan format nomor HP Indonesia aktif (contoh: 081234567890).",
+      error: "INVALID_PHONE_FORMAT",
+    };
+  }
+
+  // 3. Basic Field Completion Check
+  if (!serviceId || !bookingDate || !startTime) {
+    return {
+      success: false,
+      message: "Data jadwal pemesanan belum lengkap. Silakan pilih layanan, tanggal, dan jam.",
       error: "MISSING_REQUIRED_FIELDS",
     };
   }
 
-  // Sanitize phone
-  const cleanPhone = customerPhone.replace(/\D/g, "");
-  if (cleanPhone.length < 9 || cleanPhone.length > 15) {
-    return {
-      success: false,
-      message: "Nomor WhatsApp / HP tidak valid. Masukkan nomor yang benar.",
-      error: "INVALID_PHONE",
-    };
+  // 4. Anti-Spam / Rate-Limiting: Max 2 active bookings per phone number on the same date
+  try {
+    const payload = await getPayload({ config: configPromise });
+    const existingPhoneBookings = await payload.find({
+      collection: "bookings",
+      where: {
+        and: [
+          { customerPhone: { equals: cleanPhone } },
+          { bookingDate: { equals: bookingDate } },
+          { status: { not_equals: "CANCELLED" } },
+        ],
+      },
+      limit: 5,
+    });
+
+    if (existingPhoneBookings.totalDocs >= 2) {
+      return {
+        success: false,
+        message: "Nomor WhatsApp ini sudah memiliki 2 reservasi aktif pada tanggal tersebut. Silakan hubungi staf salon jika membutuhkan slot tambahan.",
+        error: "PHONE_BOOKING_LIMIT_REACHED",
+      };
+    }
+  } catch (err) {
+    console.error("[Booking Service] Anti-spam check error:", err);
   }
 
   // 1. Authoritative Service & Duration Lookup

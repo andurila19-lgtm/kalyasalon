@@ -639,7 +639,7 @@ export function InteractiveBooking({
       )}
 
       {/* ============================================================
-          STEP 4: CUSTOMER INFORMATION (MOBILE 16PX FONT SIZE SAFE)
+          STEP 4: CUSTOMER INFORMATION (STRICT VALIDATION + ANTI-SPAM)
           ============================================================ */}
       {step === 4 && (
         <div className="space-y-4 sm:space-y-6 max-w-xl mx-auto">
@@ -648,44 +648,73 @@ export function InteractiveBooking({
               Data Diri Pemesan
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Mohon isi data kontak Anda untuk verifikasi reservasi janji temu.
+              Mohon isi nama dan nomor WhatsApp aktif untuk verifikasi jadwal janji temu.
             </p>
           </div>
 
           <div className="space-y-3.5 sm:space-y-4 bg-card p-4 sm:p-6 rounded-2xl border border-border shadow-xs">
+            {/* 1. NAMA LENGKAP (HANYA HURUF & SPASI) */}
             <div className="space-y-1">
-              <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                <User size={13} className="text-brand-champagne-gold" />
-                <span>Nama Lengkap *</span>
-              </label>
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                  <User size={13} className="text-brand-champagne-gold" />
+                  <span>Nama Lengkap *</span>
+                </label>
+                {customerName.trim().length >= 3 && /^[a-zA-Z\s'.]+$/.test(customerName.trim()) && (
+                  <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
+                    <Check size={11} /> Format sesuai
+                  </span>
+                )}
+              </div>
               <input
                 type="text"
                 required
                 value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="Contoh: Shafira Aulia"
+                onChange={(e) => {
+                  // Strict name filtering: only letters, spaces, apostrophes, and dots
+                  const filtered = e.target.value.replace(/[^a-zA-Z\s'.]/g, "");
+                  setCustomerName(filtered);
+                }}
+                placeholder="Masukkan nama lengkap Anda"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-champagne-gold"
               />
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground">
+                Hanya huruf dan spasi (minimal 3 karakter).
+              </p>
             </div>
 
+            {/* 2. NOMOR WHATSAPP (HANYA DIGIT ANGKA 08/628) */}
             <div className="space-y-1">
-              <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                <Phone size={13} className="text-brand-champagne-gold" />
-                <span>Nomor WhatsApp / HP Aktif *</span>
-              </label>
+              <div className="flex justify-between items-center">
+                <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                  <Phone size={13} className="text-brand-champagne-gold" />
+                  <span>Nomor WhatsApp Aktif *</span>
+                </label>
+                {/^(08|628)[0-9]{8,12}$/.test(customerPhone.trim()) && (
+                  <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
+                    <Check size={11} /> Nomor valid
+                  </span>
+                )}
+              </div>
               <input
                 type="tel"
+                inputMode="numeric"
                 required
                 value={customerPhone}
-                onChange={(e) => setCustomerPhone(e.target.value)}
+                onChange={(e) => {
+                  // Strict phone filtering: only digits 0-9, max 14 characters
+                  const digits = e.target.value.replace(/[^0-9]/g, "").slice(0, 14);
+                  setCustomerPhone(digits);
+                }}
                 placeholder="Contoh: 081234567890"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-champagne-gold"
               />
               <p className="text-[10px] sm:text-[11px] text-muted-foreground">
-                Digunakan untuk konfirmasi kehadiran atau info perubahan jadwal.
+                Nomor HP Indonesia (diawali 08 atau 628, 10–14 digit angka).
               </p>
             </div>
 
+            {/* 3. EMAIL (OPSIONAL) */}
             <div className="space-y-1">
               <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
                 <Mail size={13} className="text-brand-champagne-gold" />
@@ -700,6 +729,7 @@ export function InteractiveBooking({
               />
             </div>
 
+            {/* 4. CATATAN (OPSIONAL) */}
             <div className="space-y-1">
               <label className="text-xs font-bold text-foreground flex items-center gap-1.5">
                 <FileText size={13} className="text-brand-champagne-gold" />
@@ -712,6 +742,16 @@ export function InteractiveBooking({
                 placeholder="Contoh: Rambut tebal sebahu, ingin konsultasi warna..."
                 className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-champagne-gold resize-none"
               />
+            </div>
+
+            {/* 5. KEBIJAKAN VERIFIKASI ANTI-ISENG */}
+            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-[11px] text-amber-950 dark:text-amber-200 space-y-1">
+              <p className="font-bold flex items-center gap-1 text-amber-900 dark:text-amber-100">
+                <span>📋 Ketentuan Kehadiran:</span>
+              </p>
+              <p className="leading-relaxed">
+                Staf salon akan mengonfirmasi jadwal via WhatsApp. Mohon pastikan nomor Anda aktif. Reservasi yang tidak dapat dihubungi berhak dialihkan ke pelanggan lain.
+              </p>
             </div>
           </div>
 
@@ -729,8 +769,12 @@ export function InteractiveBooking({
             <Button
               variant="gold"
               size="lg"
-              disabled={!customerName.trim() || !customerPhone.trim()}
-              className="rounded-full px-6 sm:px-8 gap-2 font-semibold text-xs sm:text-sm min-h-[46px] shadow-md shadow-brand-champagne-gold/20"
+              disabled={
+                customerName.trim().length < 3 ||
+                !/^[a-zA-Z\s'.]+$/.test(customerName.trim()) ||
+                !/^(08|628)[0-9]{8,12}$/.test(customerPhone.trim())
+              }
+              className="rounded-full px-6 sm:px-8 gap-2 font-semibold text-xs sm:text-sm min-h-[46px] shadow-md shadow-brand-champagne-gold/20 disabled:opacity-50"
               onClick={() => setStep(5)}
             >
               <span>Review Booking</span>
