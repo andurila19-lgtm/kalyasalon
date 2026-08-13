@@ -1,505 +1,636 @@
 /* ==========================================================================
-   KALYA SALON — EXECUTIVE CMS ADMIN THEME & DASHBOARD STYLING
-   Palet: Warm Ivory, Champagne Gold, Deep Espresso, Crisp Elevation
+   KALYA SALON — MASTER LUXURY CMS ADMIN STYLING & COMPLETE REDESIGN
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   1. COLOR SYSTEM & CSS TOKENS
+   -------------------------------------------------------------------------- */
 :root {
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: 'Playfair Display', Georgia, serif;
 
-  --style-radius-s: 8px;
-  --style-radius-m: 12px;
-  --style-radius-l: 16px;
-
-  /* Brand Accents */
   --kalya-gold: #C9A45C;
-  --kalya-gold-hover: #B89248;
-  --kalya-gold-light: #F7F2E7;
-  --kalya-gold-border: rgba(201, 164, 92, 0.35);
-  --kalya-espresso: #3E3024;
-  --kalya-espresso-soft: #5C4B3C;
-  --kalya-blush: #F4ECE8;
+  --kalya-gold-hover: #D8B96C;
+  --kalya-gold-subtle: rgba(201, 164, 92, 0.15);
+  --kalya-gold-border: rgba(201, 164, 92, 0.3);
+  --kalya-gold-glow: rgba(201, 164, 92, 0.25);
 
-  /* Light Theme */
+  --kalya-dark-bg: #12100E;
+  --kalya-card-bg: #1A1714;
+  --kalya-card-border: rgba(255, 255, 255, 0.08);
+  --kalya-text-main: #FAF8F5;
+  --kalya-text-muted: #A89F91;
+
+  /* Theme tokens */
+  --theme-bg: #12100E;
+  --theme-text: #FAF8F5;
+  --theme-input-bg: #1C1814;
+  --theme-elevation-0: #1A1714;
+  --theme-elevation-50: #221E1A;
+  --theme-elevation-100: #2C2621;
+  --theme-elevation-150: #38302A;
+  --theme-elevation-200: #463D35;
+  --theme-elevation-300: #C9A45C;
+  --theme-elevation-400: #D8B96C;
+  --theme-elevation-500: #FAF8F5;
+}
+
+[data-theme="light"] {
   --theme-bg: #FAF8F5;
   --theme-text: #26211D;
   --theme-input-bg: #FFFFFF;
-
   --theme-elevation-0: #FFFFFF;
   --theme-elevation-50: #FAF8F5;
   --theme-elevation-100: #F4EFEA;
   --theme-elevation-150: #EBE4DC;
   --theme-elevation-200: #E0D7CD;
-  --theme-elevation-250: #D3C8BC;
   --theme-elevation-300: #C9A45C;
-  --theme-elevation-350: #B89248;
   --theme-elevation-400: #5C4B3C;
-  --theme-elevation-450: #46382C;
   --theme-elevation-500: #3E3024;
-}
 
-[data-theme="dark"] {
-  --theme-bg: #141210;
-  --theme-text: #F7F4F0;
-  --theme-input-bg: #1C1916;
-
-  --theme-elevation-0: #1C1916;
-  --theme-elevation-50: #24201C;
-  --theme-elevation-100: #2E2924;
-  --theme-elevation-150: #3B342E;
-  --theme-elevation-200: #4B423A;
-  --theme-elevation-250: #5E5349;
-  --theme-elevation-300: #C9A45C;
-  --theme-elevation-350: #D8B96C;
-  --theme-elevation-400: #E6D4AA;
-  --theme-elevation-450: #F0E6CE;
-  --theme-elevation-500: #F7F4F0;
+  --kalya-dark-bg: #FAF8F5;
+  --kalya-card-bg: #FFFFFF;
+  --kalya-card-border: #EBE4DC;
+  --kalya-text-main: #26211D;
+  --kalya-text-muted: #6E655F;
 }
 
 body, #app-content, .template-default, .dashboard {
   font-family: var(--font-body) !important;
   background-color: var(--theme-bg) !important;
   color: var(--theme-text) !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ==========================================================================
-   CUSTOM DASHBOARD HERO & STATS SYSTEM
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   2. HIDE DEFAULT PAYLOAD COLLECTION LIST (ELIMINATE GAMBAR 2)
+   -------------------------------------------------------------------------- */
+.dashboard > .dashboard__group,
+.dashboard > .dashboard__label,
+.dashboard > .dashboard__card-list,
+.dashboard > .collection-group,
+.dashboard > h2,
+.dashboard > ul,
+.dashboard > .card,
+.dashboard > .dashboard__collections,
+.dashboard__group {
+  display: none !important;
+}
 
-.kalya-admin-dashboard {
-  margin-bottom: 28px;
+/* Keep only our custom dashboard */
+.dashboard {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 24px 28px !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. EXECUTIVE DASHBOARD WRAPPER & HEADER
+   -------------------------------------------------------------------------- */
+.kalya-executive-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
 }
 
-/* 1. Executive Banner */
-.kalya-hero-banner {
-  background: linear-gradient(135deg, #3E3024 0%, #261D15 60%, #1B140E 100%);
-  border-radius: var(--style-radius-l);
-  padding: 32px 36px;
-  color: #FAF8F5;
-  box-shadow: 0 12px 32px -8px rgba(38, 29, 21, 0.4), 0 0 0 1px rgba(201, 164, 92, 0.2);
-  margin-bottom: 28px;
-  position: relative;
-  overflow: hidden;
-}
-
-.kalya-hero-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(201, 164, 92, 0.25) 0%, rgba(201, 164, 92, 0) 70%);
-  pointer-events: none;
-}
-
-.kalya-hero-banner-inner {
+/* Header Banner */
+.kalya-dash-header {
+  background: linear-gradient(135deg, #241D17 0%, #191410 50%, #100C09 100%);
+  border: 1px solid var(--kalya-gold-border);
+  border-radius: 16px;
+  padding: 30px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  flex-wrap: wrap;
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(201, 164, 92, 0.3);
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
-.kalya-hero-content {
-  max-width: 620px;
+.kalya-dash-header::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(201, 164, 92, 0.22) 0%, rgba(201, 164, 92, 0) 70%);
+  pointer-events: none;
 }
 
-.kalya-badge-wrapper {
+.kalya-dash-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 20px;
+}
+
+.kalya-monogram {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #C9A45C 0%, #8E6D2F 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1A140E;
+  box-shadow: 0 8px 20px rgba(201, 164, 92, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.kalya-brand-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
-.kalya-status-pill {
+.kalya-live-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  letter-spacing: 0.02em;
-}
-
-.kalya-status-pill.online {
-  background: rgba(46, 125, 50, 0.2);
+  background: rgba(46, 125, 50, 0.25);
   border: 1px solid rgba(76, 175, 80, 0.4);
   color: #81C784;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
 }
 
-.kalya-status-pill.location {
-  background: rgba(201, 164, 92, 0.15);
-  border: 1px solid rgba(201, 164, 92, 0.3);
-  color: #E6D4AA;
-}
-
-.kalya-ping-dot {
-  width: 7px;
-  height: 7px;
-  background-color: #4CAF50;
+.kalya-live-dot {
+  width: 6px;
+  height: 6px;
+  background: #4CAF50;
   border-radius: 50%;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
 }
 
-.kalya-hero-title {
-  font-size: 1.75rem;
+.kalya-date-text {
+  font-size: 0.76rem;
+  color: var(--kalya-text-muted);
+}
+
+.kalya-dash-title {
+  font-size: 1.65rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   color: #FFFFFF;
 }
 
-.kalya-gold-text {
-  color: var(--kalya-gold);
+.kalya-gold-gradient {
+  background: linear-gradient(135deg, #F0E6CE 0%, #C9A45C 50%, #D8B96C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.kalya-hero-subtitle {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: rgba(250, 248, 245, 0.82);
+.kalya-dash-subtitle {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(250, 248, 245, 0.8);
   margin: 0;
+  max-width: 580px;
 }
 
-.kalya-hero-actions {
+.kalya-dash-actions {
   display: flex;
   gap: 12px;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-.kalya-btn {
+.kalya-action-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   padding: 10px 18px;
-  border-radius: var(--style-radius-s);
+  border-radius: 10px;
   text-decoration: none;
-  transition: all 0.18s ease-out;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
-.kalya-btn-primary {
-  background: var(--kalya-gold);
-  color: #1A1614 !important;
+.kalya-action-btn.primary {
+  background: linear-gradient(135deg, #C9A45C 0%, #B89248 100%);
+  color: #140E0A !important;
+  font-weight: 700;
   box-shadow: 0 4px 14px rgba(201, 164, 92, 0.35);
 }
 
-.kalya-btn-primary:hover {
-  background: var(--kalya-gold-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(201, 164, 92, 0.45);
+.kalya-action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(201, 164, 92, 0.5);
+  background: linear-gradient(135deg, #D8B96C 0%, #C9A45C 100%);
 }
 
-.kalya-btn-outline {
+.kalya-action-btn.secondary {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   color: #FAF8F5 !important;
 }
 
-.kalya-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-1px);
-}
-
-/* 2. Section Heading */
-.kalya-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  margin-top: 8px;
-}
-
-.kalya-section-header.payload-divider {
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid var(--theme-elevation-150);
-}
-
-.kalya-section-title-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.kalya-section-icon {
-  color: var(--kalya-gold);
-}
-
-.kalya-section-heading {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--theme-elevation-500);
-  margin: 0;
-}
-
-.kalya-section-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--kalya-gold);
-  background: rgba(201, 164, 92, 0.12);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-/* 3. Stats & Action Grid */
-.kalya-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.kalya-stat-card {
-  background: var(--theme-elevation-0);
-  border: 1px solid var(--theme-elevation-150);
-  border-radius: var(--style-radius-m);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s ease-out;
-  position: relative;
-  overflow: hidden;
-}
-
-.kalya-stat-card:hover {
-  transform: translateY(-2px);
+.kalya-action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
   border-color: var(--kalya-gold);
-  box-shadow: 0 8px 24px -4px rgba(201, 164, 92, 0.2), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
 }
 
-.kalya-stat-card-header {
+/* --------------------------------------------------------------------------
+   4. METRICS STRIP
+   -------------------------------------------------------------------------- */
+.kalya-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.kalya-metric-chip {
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.2s ease;
 }
 
-.kalya-stat-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--style-radius-s);
+.kalya-metric-chip:hover {
+  border-color: var(--kalya-gold-border);
+}
+
+.kalya-chip-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.kalya-stat-icon-box.gold {
-  background: rgba(201, 164, 92, 0.14);
-  color: #B89248;
-}
-
-.kalya-stat-icon-box.brown {
-  background: rgba(62, 48, 36, 0.1);
-  color: #5C4B3C;
-}
-
-.kalya-stat-icon-box.blush {
-  background: rgba(232, 212, 212, 0.4);
-  color: #8C5C5C;
-}
-
-[data-theme="dark"] .kalya-stat-icon-box.gold {
+.kalya-chip-icon.gold {
   background: rgba(201, 164, 92, 0.2);
-  color: #D8B96C;
+  color: var(--kalya-gold);
 }
 
-[data-theme="dark"] .kalya-stat-icon-box.brown {
-  background: rgba(201, 164, 92, 0.15);
+.kalya-chip-icon.brown {
+  background: rgba(92, 75, 60, 0.3);
   color: #E6D4AA;
 }
 
-[data-theme="dark"] .kalya-stat-icon-box.blush {
-  background: rgba(232, 212, 212, 0.15);
+.kalya-chip-icon.blush {
+  background: rgba(232, 212, 212, 0.2);
   color: #F3E7E7;
 }
 
-.kalya-add-shortcut {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  background: var(--theme-elevation-100);
-  border: 1px solid var(--theme-elevation-150);
-  border-radius: var(--style-radius-s);
-  color: var(--theme-text);
-  text-decoration: none;
-  transition: all 0.15s ease-out;
+.kalya-chip-label {
+  font-size: 0.78rem;
+  color: var(--kalya-text-muted);
 }
 
-.kalya-add-shortcut:hover {
-  background: var(--kalya-gold);
-  border-color: var(--kalya-gold);
-  color: #FFFFFF !important;
-}
-
-.kalya-stat-body {
-  flex: 1;
-}
-
-.kalya-stat-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  color: var(--theme-text);
-}
-
-.kalya-stat-desc {
+.kalya-chip-val {
   font-size: 0.82rem;
-  color: var(--theme-elevation-400);
-  margin: 0 0 16px 0;
-  line-height: 1.45;
+  font-weight: 700;
+  color: var(--kalya-text-main);
+  margin-left: auto;
 }
 
-.kalya-stat-footer {
+/* --------------------------------------------------------------------------
+   5. SECTION TITLES & HEADINGS
+   -------------------------------------------------------------------------- */
+.kalya-section-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  border-top: 1px solid var(--theme-elevation-100);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--kalya-gold);
-  text-decoration: none;
-  transition: color 0.15s ease-out;
-}
-
-.kalya-stat-footer:hover {
-  color: var(--kalya-gold-hover);
-}
-
-.kalya-arrow {
-  transition: transform 0.15s ease-out;
-}
-
-.kalya-stat-card:hover .kalya-arrow {
-  transform: translateX(4px);
-}
-
-/* 4. Information Banner */
-.kalya-info-banner {
-  background: var(--theme-elevation-50);
-  border: 1px solid var(--theme-elevation-150);
-  border-radius: var(--style-radius-m);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.kalya-info-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.kalya-info-icon {
-  color: var(--kalya-gold);
-  flex-shrink: 0;
-}
-
-.kalya-info-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--theme-elevation-400);
+  margin-top: 6px;
   margin-bottom: 2px;
 }
 
-.kalya-info-val {
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--theme-text);
+.kalya-title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.kalya-info-divider {
+.kalya-gold-icon {
+  color: var(--kalya-gold);
+}
+
+.kalya-section-title h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--kalya-text-main);
+  margin: 0;
+}
+
+.kalya-pill-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kalya-gold);
+  background: var(--kalya-gold-subtle);
+  border: 1px solid var(--kalya-gold-border);
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+/* --------------------------------------------------------------------------
+   6. PRIMARY LUXURY CARDS GRID (4 MAIN CARDS)
+   -------------------------------------------------------------------------- */
+.kalya-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.kalya-luxury-card {
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.kalya-luxury-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--kalya-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.kalya-luxury-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--kalya-gold);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 164, 92, 0.15);
+}
+
+.kalya-luxury-card:hover::after {
+  opacity: 1;
+}
+
+.kalya-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.kalya-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.kalya-icon-bubble.gold {
+  background: linear-gradient(135deg, rgba(201, 164, 92, 0.25) 0%, rgba(142, 109, 47, 0.35) 100%);
+  border: 1px solid var(--kalya-gold-border);
+  color: var(--kalya-gold);
+}
+
+.kalya-icon-bubble.espresso {
+  background: linear-gradient(135deg, rgba(92, 75, 60, 0.35) 0%, rgba(46, 35, 25, 0.45) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.2);
+  color: #E6D4AA;
+}
+
+.kalya-icon-bubble.blush {
+  background: linear-gradient(135deg, rgba(232, 212, 212, 0.2) 0%, rgba(140, 92, 92, 0.25) 100%);
+  border: 1px solid rgba(232, 212, 212, 0.25);
+  color: #F3E7E7;
+}
+
+.kalya-icon-bubble.small {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.kalya-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  cursor: pointer;
+}
+
+.kalya-pill-btn.add {
+  background: rgba(201, 164, 92, 0.12);
+  border: 1px solid var(--kalya-gold-border);
+  color: var(--kalya-gold);
+}
+
+.kalya-pill-btn.add:hover {
+  background: var(--kalya-gold);
+  border-color: var(--kalya-gold);
+  color: #1A140E !important;
+  font-weight: 700;
+}
+
+.kalya-pill-btn.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kalya-card-border);
+  color: var(--kalya-text-main);
+}
+
+.kalya-pill-btn.secondary:hover {
+  background: var(--kalya-gold);
+  border-color: var(--kalya-gold);
+  color: #1A140E !important;
+  font-weight: 700;
+}
+
+.kalya-card-info h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--kalya-text-main);
+}
+
+.kalya-card-info p {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: var(--kalya-text-muted);
+  margin: 0 0 16px 0;
+}
+
+.kalya-card-actions {
+  border-top: 1px solid var(--kalya-card-border);
+  padding-top: 14px;
+}
+
+.kalya-manage-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--kalya-gold);
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.kalya-manage-link:hover {
+  color: var(--kalya-gold-hover);
+  transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   7. SECONDARY COMPACT CARDS
+   -------------------------------------------------------------------------- */
+.kalya-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.kalya-compact-card {
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.kalya-compact-card:hover {
+  border-color: var(--kalya-gold-border);
+  transform: translateY(-2px);
+}
+
+.kalya-compact-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kalya-compact-left h4 {
+  font-size: 0.94rem;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  color: var(--kalya-text-main);
+}
+
+.kalya-compact-left p {
+  font-size: 0.78rem;
+  color: var(--kalya-text-muted);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. WEBSITE DIRECT SHORTCUTS BAR
+   -------------------------------------------------------------------------- */
+.kalya-website-bar {
+  background: rgba(201, 164, 92, 0.08);
+  border: 1px solid var(--kalya-gold-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kalya-website-bar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--kalya-gold);
+  white-space: nowrap;
+}
+
+.kalya-website-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.kalya-website-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--kalya-text-main);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--kalya-card-border);
+  transition: all 0.15s ease;
+}
+
+.kalya-website-links a:hover {
+  background: var(--kalya-gold);
+  border-color: var(--kalya-gold);
+  color: #1A140E !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. FOOTER STATUS
+   -------------------------------------------------------------------------- */
+.kalya-dash-footer {
+  border-top: 1px solid var(--kalya-card-border);
+  padding-top: 18px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--kalya-text-muted);
+}
+
+.kalya-footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalya-footer-divider {
   width: 1px;
-  height: 32px;
-  background: var(--theme-elevation-150);
+  height: 16px;
+  background: var(--kalya-card-border);
 }
 
 @media (max-width: 768px) {
-  .kalya-info-divider {
+  .kalya-footer-divider {
     display: none;
   }
-}
-
-/* ==========================================================================
-   POLISH PAYLOAD'S DEFAULT COLLECTION CARDS (MAKE THEM GORGEOUS)
-   ========================================================================== */
-
-.dashboard {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 32px 28px !important;
-}
-
-.dashboard__label {
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  color: var(--theme-elevation-500) !important;
-  margin-bottom: 12px !important;
-  padding-bottom: 6px !important;
-  border-bottom: 1px solid var(--theme-elevation-150) !important;
-}
-
-.dashboard__card-list {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-  gap: 14px !important;
-}
-
-.card {
-  background: var(--theme-elevation-0) !important;
-  border: 1px solid var(--theme-elevation-150) !important;
-  border-radius: var(--style-radius-m) !important;
-  padding: 16px 18px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
-  transition: all 0.18s ease-out !important;
-}
-
-.card:hover {
-  transform: translateY(-2px) !important;
-  border-color: var(--kalya-gold) !important;
-  box-shadow: 0 8px 20px -4px rgba(201, 164, 92, 0.15) !important;
-}
-
-.card__title {
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  color: var(--theme-text) !important;
-}
-
-.card__actions button,
-.card .btn--icon {
-  background: var(--theme-elevation-100) !important;
-  border: 1px solid var(--theme-elevation-150) !important;
-  border-radius: var(--style-radius-s) !important;
-  color: var(--theme-text) !important;
-  transition: all 0.15s ease-out !important;
-}
-
-.card__actions button:hover,
-.card .btn--icon:hover {
-  background: var(--kalya-gold) !important;
-  border-color: var(--kalya-gold) !important;
-  color: #FFFFFF !important;
 }
