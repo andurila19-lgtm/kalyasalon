@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { HeartHandshake, UserCheck, ShieldCheck, Award, ArrowRight } from "lucide-react";
 
 interface AboutProps {

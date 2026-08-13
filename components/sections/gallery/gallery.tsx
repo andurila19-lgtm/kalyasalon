@@ -6,7 +6,6 @@ import { galleryData } from "@/data/gallery";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GalleryCard } from "@/components/ui/gallery-card";
 import { GalleryLightbox } from "@/components/ui/gallery-lightbox";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 

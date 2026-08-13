@@ -3,7 +3,6 @@ import { reviewsData } from "@/data/reviews";
 import { salonData } from "@/data/salon";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ReviewCard } from "@/components/ui/review-card";
-import { Button } from "@/components/ui/button";
 import { Star, ArrowRight } from "lucide-react";
 
 interface ReviewsProps {
