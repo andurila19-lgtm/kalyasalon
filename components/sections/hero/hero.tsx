@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { salonData } from "@/data/salon";
 import { useBooking } from "@/context/booking-context";
@@ -42,8 +43,8 @@ export function Hero() {
             </p>
 
             {/* Social Proof Trust Badge */}
-            <a 
-              href="#ulasan"
+            <Link 
+              href="/ulasan"
               className="flex items-center gap-3 py-2 px-4 rounded-xl bg-card border border-border/80 shadow-2xs hover:border-gold/60 transition-colors"
             >
               <div className="flex items-center gap-1 text-amber-500">
@@ -56,7 +57,7 @@ export function Hero() {
                 <span className="font-bold text-foreground">{salonData.rating}</span> / 5.0
                 <span className="text-muted-foreground ml-1">({salonData.reviewCountDisplay} Google Reviews)</span>
               </div>
-            </a>
+            </Link>
 
             {/* Call To Action Buttons with full 44px+ touch targets on mobile */}
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto pt-1">
@@ -71,10 +72,10 @@ export function Hero() {
               </Button>
 
               <Button variant="outline" size="lg" asChild className="w-full sm:w-auto min-h-[48px] rounded-full border-brand-dark-brown/30 hover:bg-muted text-brand-dark-brown text-xs sm:text-sm font-medium px-7">
-                <a href="#layanan" className="gap-2">
+                <Link href="/layanan" className="gap-2">
                   <span>LIHAT LAYANAN</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

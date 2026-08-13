@@ -111,7 +111,7 @@ export function Footer() {
 
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-gold shrink-0" />
-                <span>{salonData.openingHours.days}: {salonData.openingHours.hours} WIB</span>
+                <span>{salonData.openingHours.days}: {salonData.openingHours.hours}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
