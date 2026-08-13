@@ -3,7 +3,11 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeartHandshake, UserCheck, ShieldCheck, Award, ArrowRight } from "lucide-react";
 
-export function About() {
+interface AboutProps {
+  isPreview?: boolean;
+}
+
+export function About({ isPreview = false }: AboutProps) {
   const highlights = [
     {
       id: "friendly",
@@ -117,15 +121,18 @@ export function About() {
               })}
             </div>
 
-            {/* CTA to /tentang */}
-            <div className="pt-2">
-              <Button variant="outline" size="default" asChild className="rounded-full text-xs sm:text-sm font-semibold hover:border-gold/60">
-                <Link href="/tentang" className="gap-2">
+            {/* CTA to /tentang (only on homepage preview) */}
+            {isPreview && (
+              <div className="pt-2">
+                <Link
+                  href="/tentang"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-border bg-background shadow-xs hover:bg-muted hover:border-gold/60 text-foreground text-xs sm:text-sm font-semibold transition-colors cursor-pointer min-h-[44px]"
+                >
                   <span>Cerita Selengkapnya Tentang Kalya</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-gold" />
                 </Link>
-              </Button>
-            </div>
+              </div>
+            )}
 
           </div>
 

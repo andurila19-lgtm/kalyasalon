@@ -29,7 +29,7 @@ export default function Home() {
         <TrustBar />
 
         {/* 3. About Section (More Than Just A Salon) */}
-        <About />
+        <About isPreview={true} />
 
         {/* 4. Customer Experience (01 to 04 Editorial Standard) */}
         <CustomerExperience />
