@@ -10,7 +10,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function Gallery() {
+interface GalleryProps {
+  isPreview?: boolean;
+}
+
+export function Gallery({ isPreview = false }: GalleryProps) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -68,15 +72,18 @@ export function Gallery() {
           ))}
         </div>
 
-        {/* Bottom CTA to /galeri */}
-        <div className="mt-8 sm:mt-12 text-center">
-          <Button variant="outline" size="lg" asChild className="rounded-full text-xs sm:text-sm font-semibold hover:border-gold/60">
-            <Link href="/galeri" className="gap-2">
+        {/* Bottom CTA to /galeri (only in homepage preview) */}
+        {isPreview && (
+          <div className="mt-8 sm:mt-12 text-center">
+            <Link
+              href="/galeri"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-border bg-background shadow-xs hover:bg-muted hover:border-gold/60 text-foreground text-xs sm:text-sm font-semibold transition-colors cursor-pointer min-h-[44px]"
+            >
               <span>Buka Galeri Foto Lengkap</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
-          </Button>
-        </div>
+          </div>
+        )}
 
         {/* Accessible Lightbox Modal */}
         <GalleryLightbox

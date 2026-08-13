@@ -131,12 +131,13 @@ export function FeaturedServices() {
 
         {/* Bottom CTA to /layanan */}
         <div className="mt-8 sm:mt-12 text-center">
-          <Button variant="outline" size="lg" asChild className="rounded-full text-xs sm:text-sm font-semibold hover:border-gold/60">
-            <Link href="/layanan" className="gap-2">
-              <span>Lihat Semua Menu & Kategori Layanan</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href="/layanan"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-border bg-background shadow-xs hover:bg-muted hover:border-gold/60 text-foreground text-xs sm:text-sm font-semibold transition-colors cursor-pointer min-h-[44px]"
+          >
+            <span>Lihat Semua Menu & Kategori Layanan</span>
+            <ArrowRight className="w-4 h-4 text-gold" />
+          </Link>
         </div>
 
       </div>

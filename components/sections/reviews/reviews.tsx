@@ -6,7 +6,11 @@ import { ReviewCard } from "@/components/ui/review-card";
 import { Button } from "@/components/ui/button";
 import { Star, ArrowRight } from "lucide-react";
 
-export function Reviews() {
+interface ReviewsProps {
+  isPreview?: boolean;
+}
+
+export function Reviews({ isPreview = false }: ReviewsProps) {
   return (
     <section id="ulasan" className="py-14 sm:py-16 md:py-20 lg:py-24 bg-brand-soft-pink/25 relative overflow-hidden">
       {/* Decorative Blur Backgrounds */}
@@ -52,12 +56,17 @@ export function Reviews() {
             Berdasarkan data ulasan publik Google Maps terverifikasi untuk Kalya Salon Kota Madiun.
           </p>
 
-          <Button variant="outline" size="lg" asChild className="rounded-full text-xs sm:text-sm font-semibold hover:border-gold/60">
-            <Link href="/ulasan" className="gap-2">
-              <span>Baca Lebih Banyak Ulasan Pelanggan</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>
+          {isPreview && (
+            <div className="pt-1">
+              <Link
+                href="/ulasan"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-border bg-background shadow-xs hover:bg-muted hover:border-gold/60 text-foreground text-xs sm:text-sm font-semibold transition-colors cursor-pointer min-h-[44px]"
+              >
+                <span>Baca Lebih Banyak Ulasan Pelanggan</span>
+                <ArrowRight className="w-4 h-4 text-gold" />
+              </Link>
+            </div>
+          )}
         </div>
 
       </div>

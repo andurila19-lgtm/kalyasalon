@@ -47,10 +47,10 @@ export default function Home() {
         <WhyKalya />
 
         {/* 9. Inside Kalya Visual Gallery */}
-        <Gallery />
+        <Gallery isPreview={true} />
 
         {/* 10. Loved by Our Customers (Google Reviews) */}
-        <Reviews />
+        <Reviews isPreview={true} />
 
         {/* 11. Social Media Links (Instagram & TikTok) */}
         <SocialMedia />
