@@ -1,234 +1,300 @@
-/* ========================================
-   KALYA SALON — PREMIUM ADMIN PANEL THEME
-   ======================================== */
+/* ==========================================================================
+   KALYA SALON — PREMIUM & LIGHTWEIGHT CMS ADMIN THEME
+   Design System: Warm Ivory, Champagne Gold, Deep Espresso, Crisp Elevation
+   ========================================================================== */
 
-/* Payload 3.0 CSS Custom Properties Override */
-
+/* --------------------------------------------------------------------------
+   1. COLOR TOKENS & SYSTEM VARIABLES
+   -------------------------------------------------------------------------- */
 :root {
-  /* Light theme (default) */
-  --theme-bg: #FFFDFC;
-  --theme-text: #292522;
-  --theme-elevation-0: #FFFDFC;
-  --theme-elevation-50: #F9F6F3;
-  --theme-elevation-100: #F5F3EF;
-  --theme-elevation-150: #EDE8E2;
-  --theme-elevation-200: #E8D4D4;
-  --theme-elevation-250: #DCC8C8;
+  /* Font Family */
+  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Base Geometry */
+  --style-radius-s: 8px;
+  --style-radius-m: 12px;
+  --style-radius-l: 16px;
+
+  /* Brand Accents */
+  --kalya-gold: #C9A45C;
+  --kalya-gold-hover: #B89248;
+  --kalya-gold-light: #F7F2E7;
+  --kalya-gold-border: rgba(201, 164, 92, 0.35);
+  --kalya-espresso: #3E3024;
+  --kalya-espresso-soft: #5C4B3C;
+  --kalya-blush: #F4ECE8;
+  --kalya-border: #E8E2D8;
+
+  /* Light Theme (Default: Clean Warm Ivory Luxury) */
+  --theme-bg: #FAF8F5;
+  --theme-text: #26211D;
+  --theme-input-bg: #FFFFFF;
+
+  --theme-elevation-0: #FFFFFF;
+  --theme-elevation-50: #FAF8F5;
+  --theme-elevation-100: #F4EFEA;
+  --theme-elevation-150: #EBE4DC;
+  --theme-elevation-200: #E0D7CD;
+  --theme-elevation-250: #D3C8BC;
   --theme-elevation-300: #C9A45C;
-  --theme-elevation-350: #B8944F;
-  --theme-elevation-400: #5A4635;
-  --theme-elevation-450: #4A3A2C;
-  --theme-elevation-500: #292522;
-  --theme-elevation-550: #1F1C19;
-  --theme-elevation-600: #151310;
-  --theme-elevation-650: #0C0A08;
-  --theme-elevation-700: #050403;
-  --theme-elevation-750: #020201;
-  --theme-elevation-800: #000000;
+  --theme-elevation-350: #B89248;
+  --theme-elevation-400: #5C4B3C;
+  --theme-elevation-450: #46382C;
+  --theme-elevation-500: #3E3024;
+  --theme-elevation-550: #2E2319;
+  --theme-elevation-600: #231A13;
+  --theme-elevation-650: #1B130E;
+  --theme-elevation-700: #140E0A;
+  --theme-elevation-750: #0D0906;
+  --theme-elevation-800: #080504;
   --theme-elevation-850: #000000;
   --theme-elevation-900: #000000;
   --theme-elevation-950: #000000;
   --theme-elevation-1000: #000000;
 
-  /* Brand accent colors */
-  --theme-success-500: #4CAF50;
-  --theme-error-500: #E05252;
+  /* Status Colors */
+  --theme-success-500: #2E7D32;
+  --theme-error-500: #D32F2F;
   --theme-warning-500: #C9A45C;
-
-  /* Border radius */
-  --style-radius-s: 6px;
-  --style-radius-m: 10px;
-  --style-radius-l: 14px;
-
-  /* Font family */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Dark theme override */
+/* Dark Theme (Obsidian & Warm Gold) */
 [data-theme="dark"] {
-  --theme-bg: #1A1614;
-  --theme-text: #F5F3EF;
-  --theme-elevation-0: #1A1614;
-  --theme-elevation-50: #221E1B;
-  --theme-elevation-100: #2A2522;
-  --theme-elevation-150: #332E2A;
-  --theme-elevation-200: #3D3732;
-  --theme-elevation-250: #4A4239;
+  --theme-bg: #141210;
+  --theme-text: #F7F4F0;
+  --theme-input-bg: #1C1916;
+
+  --theme-elevation-0: #1C1916;
+  --theme-elevation-50: #24201C;
+  --theme-elevation-100: #2E2924;
+  --theme-elevation-150: #3B342E;
+  --theme-elevation-200: #4B423A;
+  --theme-elevation-250: #5E5349;
   --theme-elevation-300: #C9A45C;
   --theme-elevation-350: #D8B96C;
-  --theme-elevation-400: #E8D4D4;
-  --theme-elevation-450: #F3E7E7;
-  --theme-elevation-500: #F5F3EF;
-  --theme-elevation-550: #F9F6F3;
-  --theme-elevation-600: #FFFDFC;
+  --theme-elevation-400: #E6D4AA;
+  --theme-elevation-450: #F0E6CE;
+  --theme-elevation-500: #F7F4F0;
+  --theme-elevation-550: #FAF8F5;
+  --theme-elevation-600: #FFFFFF;
+
+  --kalya-border: #332B24;
 }
 
-/* ========================================
-   GLOBAL ADMIN STYLES
-   ======================================== */
-
-/* Admin panel wrapper */
-#app-content {
+/* --------------------------------------------------------------------------
+   2. GLOBAL TYPOGRAPHY & SMOOTH PERFORMANCE
+   -------------------------------------------------------------------------- */
+body, #app-content, .template-default, .dashboard {
   font-family: var(--font-body) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
 }
 
-/* Nav sidebar branding */
+/* --------------------------------------------------------------------------
+   3. NAVIGATION & SIDEBAR BRANDING
+   -------------------------------------------------------------------------- */
 .nav {
+  background: var(--theme-elevation-0) !important;
   border-right: 1px solid var(--theme-elevation-150) !important;
 }
 
+/* Salon Header in Nav */
 .nav__brand {
-  padding: 20px 16px !important;
+  padding: 24px 20px 20px !important;
+  border-bottom: 1px solid var(--theme-elevation-100) !important;
 }
 
-/* Nav group labels */
 .nav-group__label {
-  font-size: 0.7rem !important;
+  font-size: 0.68rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: var(--theme-elevation-300) !important;
+  color: var(--theme-elevation-350) !important;
+  padding: 18px 20px 6px !important;
 }
 
-/* Nav links */
 .nav-group .nav__link {
   border-radius: var(--style-radius-s) !important;
-  margin: 2px 8px !important;
-  padding: 8px 12px !important;
-  transition: all 0.2s ease !important;
+  margin: 3px 12px !important;
+  padding: 9px 14px !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  color: var(--theme-text) !important;
+  transition: all 0.15s ease-out !important;
 }
 
 .nav-group .nav__link:hover {
   background: var(--theme-elevation-100) !important;
+  color: var(--theme-elevation-500) !important;
+  transform: translateX(2px);
 }
 
 .nav-group .nav__link.active {
   background: var(--theme-elevation-150) !important;
+  color: var(--theme-elevation-500) !important;
   font-weight: 600 !important;
-}
-
-[data-theme="dark"] .nav-group .nav__link:hover {
-  background: var(--theme-elevation-100) !important;
+  box-shadow: inset 3px 0 0 var(--kalya-gold) !important;
 }
 
 [data-theme="dark"] .nav-group .nav__link.active {
-  background: var(--theme-elevation-150) !important;
+  background: var(--theme-elevation-100) !important;
+  box-shadow: inset 3px 0 0 var(--kalya-gold) !important;
 }
 
-/* ========================================
-   DASHBOARD CARDS
-   ======================================== */
-
+/* --------------------------------------------------------------------------
+   4. DASHBOARD & COLLECTION CARDS (CLEAN & LIGHTWEIGHT)
+   -------------------------------------------------------------------------- */
 .dashboard {
-  max-width: 1200px !important;
+  max-width: 1180px !important;
   margin: 0 auto !important;
-  padding: 32px 24px !important;
+  padding: 36px 32px !important;
 }
 
 .dashboard__label {
-  font-size: 1.25rem !important;
+  font-size: 1.15rem !important;
   font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
   color: var(--theme-elevation-500) !important;
-  margin-bottom: 16px !important;
+  margin-top: 28px !important;
+  margin-bottom: 14px !important;
   padding-bottom: 8px !important;
-  border-bottom: 2px solid var(--theme-elevation-300) !important;
+  border-bottom: 1px solid var(--theme-elevation-150) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.dashboard__label::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: var(--kalya-gold);
+  border-radius: 2px;
 }
 
 .dashboard__card-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
   gap: 16px !important;
 }
 
+/* Lightweight Elegant Card */
 .card {
-  border-radius: var(--style-radius-m) !important;
+  background: var(--theme-elevation-0) !important;
   border: 1px solid var(--theme-elevation-150) !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: var(--style-radius-m) !important;
+  padding: 20px 22px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out !important;
+  text-decoration: none !important;
+  position: relative !important;
   overflow: hidden !important;
-  background: var(--theme-elevation-50) !important;
 }
 
 .card:hover {
-  border-color: var(--theme-elevation-300) !important;
-  box-shadow: 0 4px 20px rgba(201, 164, 92, 0.12) !important;
   transform: translateY(-2px) !important;
-}
-
-[data-theme="dark"] .card {
-  background: var(--theme-elevation-50) !important;
-  border-color: var(--theme-elevation-150) !important;
-}
-
-[data-theme="dark"] .card:hover {
-  border-color: var(--theme-elevation-300) !important;
-  box-shadow: 0 4px 20px rgba(201, 164, 92, 0.15) !important;
+  border-color: var(--kalya-gold) !important;
+  box-shadow: 0 8px 24px -4px rgba(201, 164, 92, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
 .card__title {
+  font-size: 1rem !important;
   font-weight: 600 !important;
-  font-size: 0.95rem !important;
+  color: var(--theme-text) !important;
+  margin-bottom: 4px !important;
 }
 
-/* ========================================
-   BUTTONS
-   ======================================== */
+/* Create New Button in Card */
+.card__actions button,
+.card .btn--icon {
+  background: var(--theme-elevation-100) !important;
+  border: 1px solid var(--theme-elevation-150) !important;
+  border-radius: var(--style-radius-s) !important;
+  color: var(--theme-text) !important;
+  transition: all 0.15s ease-out !important;
+}
 
+.card__actions button:hover,
+.card .btn--icon:hover {
+  background: var(--kalya-gold) !important;
+  border-color: var(--kalya-gold) !important;
+  color: #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. BUTTONS (LUXURY FINISH & INSTANT FEEDBACK)
+   -------------------------------------------------------------------------- */
 .btn {
   border-radius: var(--style-radius-s) !important;
   font-weight: 600 !important;
   font-size: 0.875rem !important;
   letter-spacing: 0.01em !important;
-  transition: all 0.2s ease !important;
+  padding: 9px 18px !important;
+  transition: all 0.15s ease-out !important;
 }
 
+/* Primary Salon Gold Action */
 .btn--style-primary {
-  background: #5A4635 !important;
-  color: #FFFDFC !important;
+  background: #3E3024 !important;
+  color: #FAF8F5 !important;
+  border: 1px solid #3E3024 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
 }
 
 .btn--style-primary:hover {
-  background: #4A3A2C !important;
-  box-shadow: 0 2px 12px rgba(90, 70, 53, 0.3) !important;
+  background: #261D15 !important;
+  border-color: #261D15 !important;
+  box-shadow: 0 4px 14px rgba(62, 48, 36, 0.25) !important;
+  transform: translateY(-1px) !important;
 }
 
 [data-theme="dark"] .btn--style-primary {
-  background: #C9A45C !important;
+  background: var(--kalya-gold) !important;
   color: #1A1614 !important;
+  border-color: var(--kalya-gold) !important;
 }
 
 [data-theme="dark"] .btn--style-primary:hover {
-  background: #D8B96C !important;
-  box-shadow: 0 2px 12px rgba(201, 164, 92, 0.3) !important;
+  background: var(--kalya-gold-hover) !important;
+  border-color: var(--kalya-gold-hover) !important;
+  box-shadow: 0 4px 14px rgba(201, 164, 92, 0.3) !important;
 }
 
+/* Secondary Button */
 .btn--style-secondary {
+  background: var(--theme-elevation-0) !important;
   border: 1px solid var(--theme-elevation-200) !important;
-  background: transparent !important;
+  color: var(--theme-text) !important;
 }
 
 .btn--style-secondary:hover {
-  border-color: var(--theme-elevation-300) !important;
-  background: var(--theme-elevation-50) !important;
+  background: var(--theme-elevation-100) !important;
+  border-color: var(--kalya-gold) !important;
 }
 
-/* ========================================
-   FORM FIELDS
-   ======================================== */
-
+/* --------------------------------------------------------------------------
+   6. FORM INPUTS & FIELD EDITING
+   -------------------------------------------------------------------------- */
 .field-type {
-  margin-bottom: 20px !important;
+  margin-bottom: 22px !important;
 }
 
 .field-type label {
-  font-weight: 600 !important;
   font-size: 0.8rem !important;
+  font-weight: 600 !important;
   letter-spacing: 0.02em !important;
-  text-transform: uppercase !important;
+  color: var(--theme-elevation-450) !important;
   margin-bottom: 6px !important;
-  color: var(--theme-elevation-400) !important;
 }
 
-[data-theme="dark"] .field-type label {
-  color: var(--theme-elevation-450) !important;
+.field-description {
+  font-size: 0.78rem !important;
+  color: var(--theme-elevation-350) !important;
+  margin-top: 4px !important;
 }
 
 input[type="text"],
@@ -240,99 +306,107 @@ input[type="search"],
 textarea,
 select,
 .react-select__control {
-  border-radius: var(--style-radius-s) !important;
+  background: var(--theme-input-bg) !important;
   border: 1px solid var(--theme-elevation-200) !important;
-  background: var(--theme-elevation-0) !important;
-  transition: all 0.2s ease !important;
-  font-family: var(--font-body) !important;
+  border-radius: var(--style-radius-s) !important;
+  color: var(--theme-text) !important;
+  padding: 10px 14px !important;
+  font-size: 0.92rem !important;
+  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
 }
 
 input:focus,
 textarea:focus,
 select:focus,
 .react-select__control--is-focused {
-  border-color: var(--theme-elevation-300) !important;
+  border-color: var(--kalya-gold) !important;
   box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.15) !important;
   outline: none !important;
 }
 
-/* ========================================
-   TABLE / LIST VIEW
-   ======================================== */
-
-.collection-list .table {
-  border-radius: var(--style-radius-m) !important;
-  overflow: hidden !important;
-  border: 1px solid var(--theme-elevation-150) !important;
+/* --------------------------------------------------------------------------
+   7. LIST TABLES & DATA TABLES
+   -------------------------------------------------------------------------- */
+.collection-list {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 24px 32px !important;
 }
 
-.table .row:hover {
+.table {
+  background: var(--theme-elevation-0) !important;
+  border: 1px solid var(--theme-elevation-150) !important;
+  border-radius: var(--style-radius-m) !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+
+.table th {
+  background: var(--theme-elevation-50) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--theme-elevation-400) !important;
+  border-bottom: 1px solid var(--theme-elevation-150) !important;
+  padding: 14px 16px !important;
+}
+
+.table td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--theme-elevation-100) !important;
+  font-size: 0.88rem !important;
+}
+
+.table tr:hover td {
   background: var(--theme-elevation-50) !important;
 }
 
-[data-theme="dark"] .table .row:hover {
-  background: var(--theme-elevation-100) !important;
-}
-
-/* ========================================
-   HEADER
-   ======================================== */
-
-.app-header {
-  border-bottom: 1px solid var(--theme-elevation-150) !important;
-  backdrop-filter: blur(12px) !important;
-}
-
-/* ========================================
-   LOGIN / CREATE FIRST USER PAGE
-   ======================================== */
-
+/* --------------------------------------------------------------------------
+   8. LOGIN & FIRST USER SETUP PORTAL
+   -------------------------------------------------------------------------- */
 .login,
 .create-first-user {
+  background: radial-gradient(circle at top right, #F7F0E6 0%, #FAF8F5 45%, #F4EDE4 100%) !important;
   min-height: 100vh !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: linear-gradient(135deg, #FFFDFC 0%, #F3E7E7 50%, #E8D4D4 100%) !important;
 }
 
 [data-theme="dark"] .login,
 [data-theme="dark"] .create-first-user {
-  background: linear-gradient(135deg, #1A1614 0%, #221E1B 50%, #2A2522 100%) !important;
+  background: radial-gradient(circle at top right, #241F1A 0%, #141210 50%, #1C1814 100%) !important;
 }
 
 .login__form,
 .create-first-user__form {
   background: var(--theme-elevation-0) !important;
+  border: 1px solid var(--theme-elevation-150) !important;
   border-radius: var(--style-radius-l) !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--theme-elevation-150) !important;
-  padding: 40px !important;
+  padding: 44px 40px !important;
+  box-shadow: 0 20px 48px -12px rgba(62, 48, 36, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
   max-width: 440px !important;
   width: 100% !important;
 }
 
 [data-theme="dark"] .login__form,
 [data-theme="dark"] .create-first-user__form {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--theme-elevation-150) !important;
-}
-
-.login__header,
-.create-first-user__header {
-  text-align: center !important;
-  margin-bottom: 32px !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--theme-elevation-150) !important;
 }
 
 .login__header h1,
 .create-first-user__header h1 {
   font-size: 1.5rem !important;
   font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
   color: var(--theme-elevation-500) !important;
+  text-align: center !important;
 }
 
-/* ========================================
-   SCROLLBAR
-   ======================================== */
-
+/* --------------------------------------------------------------------------
+   9. SCROLLBAR & SLICK POLISH
+   -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -344,38 +418,9 @@ select:focus,
 
 ::-webkit-scrollbar-thumb {
   background: var(--theme-elevation-200);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--theme-elevation-300);
-}
-
-/* ========================================
-   MICRO-ANIMATIONS
-   ======================================== */
-
-.nav__link,
-.card,
-.btn,
-input,
-textarea,
-select {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Smooth page transitions */
-#app-content > * {
-  animation: fadeIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: var(--kalya-gold);
 }
