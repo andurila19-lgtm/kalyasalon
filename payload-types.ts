@@ -223,12 +223,20 @@ export interface Category {
   createdAt: string;
 }
 /**
+ * Seluruh foto dan gambar yang diunggah ke website Kalya Salon tersimpan di sini secara otomatis.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: number;
-  alt: string;
+  /**
+   * Boleh dikosongkan (otomatis diisi), atau tulis keterangan singkat isi gambar untuk SEO Google.
+   */
+  alt?: string | null;
+  /**
+   * Catatan internal pemilik salon mengenai foto ini.
+   */
   caption?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -304,9 +312,9 @@ export interface Review {
    */
   customerName: string;
   /**
-   * Pilih jumlah bintang penilaian dari pelanggan.
+   * Ketik angka rating bintang (misal: 5 untuk 5 bintang).
    */
-  rating: '5' | '4' | '3';
+  rating: number;
   /**
    * Salin isi komentar atau testimoni asli dari pelanggan.
    */

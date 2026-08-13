@@ -24,11 +24,7 @@ export default buildConfig({
       titleSuffix: "• Kalya Salon Control Center",
     },
     components: {
-      views: {
-        dashboard: {
-          Component: "@/components/admin/DashboardHero#DashboardHero",
-        },
-      },
+      beforeDashboard: ["@/components/admin/DashboardHero#DashboardHero"],
     },
   },
   collections: [Users, Services, Categories, Gallery, Reviews, Media],

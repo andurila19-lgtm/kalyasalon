@@ -28,17 +28,15 @@ export const Reviews: CollectionConfig = {
     },
     {
       name: "rating",
-      type: "select",
-      label: "Nilai Bintang (Rating)",
-      options: [
-        { label: "⭐⭐⭐⭐⭐ (5 Bintang - Sangat Puas)", value: "5" },
-        { label: "⭐⭐⭐⭐ (4 Bintang - Puas)", value: "4" },
-        { label: "⭐⭐⭐ (3 Bintang - Cukup)", value: "3" },
-      ],
-      defaultValue: "5",
+      type: "number",
+      label: "Nilai Bintang (Rating 1 - 5)",
+      min: 1,
+      max: 5,
+      defaultValue: 5,
       required: true,
       admin: {
-        description: "Pilih jumlah bintang penilaian dari pelanggan.",
+        placeholder: "5",
+        description: "Ketik angka rating bintang (misal: 5 untuk 5 bintang).",
       },
     },
     {
