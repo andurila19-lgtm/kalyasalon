@@ -21,10 +21,14 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: "• Kalya Salon Admin",
+      titleSuffix: "• Kalya Salon Control Center",
     },
     components: {
-      beforeDashboard: ["@/components/admin/DashboardHero#DashboardHero"],
+      views: {
+        dashboard: {
+          Component: "@/components/admin/DashboardHero#DashboardHero",
+        },
+      },
     },
   },
   collections: [Users, Services, Categories, Gallery, Reviews, Media],
