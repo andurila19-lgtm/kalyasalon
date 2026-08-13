@@ -1,4 +1,50 @@
 /* Custom styling for Kalya Salon Admin Panel */
+/* Reset: prevent global site CSS from bleeding into Payload admin */
 :root {
   --theme-bg: #FFFDFC;
+}
+
+/* Force Payload admin to use its own default styles, not the site's Tailwind tokens */
+[data-theme="light"] {
+  --theme-bg: #ffffff;
+  --theme-text: #1a1a1a;
+  --theme-input-bg: #ffffff;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+[data-theme="dark"] {
+  --theme-bg: #141414;
+  --theme-text: #e0e0e0;
+  --theme-input-bg: #1e1e1e;
+  color: #e0e0e0;
+  background: #141414;
+}
+
+/* Ensure all form labels and text in admin are always visible */
+.payload__modal-container,
+#payload-admin,
+[class*="field-type"] label,
+[class*="field-type"] .field-description,
+.form-submit .btn,
+.template-default,
+.dashboard,
+.account,
+.login,
+.create-first-user {
+  color: inherit;
+}
+
+/* Override any Tailwind base resets that may bleed in */
+#payload-admin *,
+.template-default * {
+  border-color: revert;
+}
+
+#payload-admin input,
+#payload-admin select,
+#payload-admin textarea {
+  color: inherit;
+  background: var(--theme-input-bg, #fff);
+  border-color: #d0d0d0;
 }
