@@ -22,7 +22,7 @@ import {
   ArrowRight,
   ExternalLink,
   MessageSquare,
-  Sparkles,
+  Award,
   CalendarDays,
   ListFilter
 } from "lucide-react";
@@ -300,7 +300,7 @@ export function BookingDashboard() {
         </div>
 
         <div className="kalya-kpi-card completed">
-          <div className="kalya-kpi-icon"><Sparkles size={20} /></div>
+          <div className="kalya-kpi-icon"><Award size={20} /></div>
           <div>
             <div className="kalya-kpi-label">Selesai Dilayani</div>
             <div className="kalya-kpi-val">{kpiCompleted} Selesai</div>

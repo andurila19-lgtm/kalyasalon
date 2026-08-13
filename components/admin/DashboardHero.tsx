@@ -16,7 +16,7 @@ import {
   ShieldCheck,
   MapPin,
   Clock,
-  Sparkles,
+  Award,
   Calendar,
   Eye,
   Settings,
@@ -145,7 +145,7 @@ export const DashboardHero: React.FC = () => {
           {/* 4 PRIMARY CARDS */}
           <div className="kalya-section-title">
             <div className="kalya-title-left">
-              <Sparkles size={16} className="kalya-gold-icon" />
+              <Award size={16} className="kalya-gold-icon" />
               <h2>Kelola Konten Utama Website</h2>
             </div>
             <span className="kalya-pill-tag">Menu Cepat</span>

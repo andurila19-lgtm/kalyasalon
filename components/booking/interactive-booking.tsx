@@ -17,7 +17,6 @@ import {
   FileText,
   CheckCircle2,
   AlertCircle,
-  Sparkles,
   ChevronRight,
   ChevronLeft,
   ArrowRight,
