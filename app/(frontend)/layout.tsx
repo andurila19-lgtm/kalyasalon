@@ -81,15 +81,22 @@ export default function FrontendLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${playfair.variable} ${manrope.variable}`}>
-      <div className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col">
+    <html
+      lang={siteConfig.lang}
+      className={`${playfair.variable} ${manrope.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <body
+        className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col"
+        suppressHydrationWarning
+      >
         <GoogleAnalytics />
         <BookingProvider>
           <JsonLd />
           {children}
           <BookingModal />
         </BookingProvider>
-      </div>
-    </div>
+      </body>
+    </html>
   );
 }
