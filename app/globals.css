@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Brand Foundation Palette */
+    --brand-blush-pink: #E8D4D4;
+    --brand-soft-pink: #F3E7E7;
+    --brand-warm-ivory: #FFFDFC;
+    --brand-marble-white: #F5F3EF;
+    --brand-champagne-gold: #C9A45C;
+    --brand-soft-gold: #D8B96C;
+    --brand-dark-brown: #5A4635;
+    --brand-charcoal: #292522;
+
+    /* Semantic Design Tokens */
+    --background: #FFFDFC; /* Warm Ivory */
+    --foreground: #292522; /* Charcoal */
+
+    --card: #FFFFFF;
+    --card-foreground: #292522;
+
+    --popover: #FFFFFF;
+    --popover-foreground: #292522;
+
+    --primary: #5A4635; /* Dark Brown */
+    --primary-foreground: #FFFDFC;
+
+    --secondary: #F3E7E7; /* Soft Pink */
+    --secondary-foreground: #5A4635;
+
+    --muted: #F5F3EF; /* Marble White */
+    --muted-foreground: #6E655F;
+
+    --accent: #E8D4D4; /* Blush Pink */
+    --accent-foreground: #292522;
+
+    --gold: #C9A45C; /* Champagne Gold */
+    --gold-light: #D8B96C; /* Soft Gold */
+    --gold-foreground: #FFFDFC;
+
+    --destructive: #E05252;
+    --destructive-foreground: #FFFDFC;
+
+    --border: #E8D4D4; /* Blush Pink subtle border */
+    --input: #E8D4D4;
+    --ring: #C9A45C; /* Champagne Gold ring */
+
+    --radius: 0.625rem;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-foreground: var(--gold-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand-blush-pink: var(--brand-blush-pink);
+  --color-brand-soft-pink: var(--brand-soft-pink);
+  --color-brand-warm-ivory: var(--brand-warm-ivory);
+  --color-brand-marble-white: var(--brand-marble-white);
+  --color-brand-champagne-gold: var(--brand-champagne-gold);
+  --color-brand-soft-gold: var(--brand-soft-gold);
+  --color-brand-dark-brown: var(--brand-dark-brown);
+  --color-brand-charcoal: var(--brand-charcoal);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), serif;
+}
+
+/* Mobile Safe Area utilities */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Hide scrollbar for horizontal category filter chips on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,48 @@
+import { GalleryItem } from "@/types/gallery";
+
+export const galleryData: GalleryItem[] = [
+  {
+    id: "gal-1",
+    src: "/images/gallery/haircut-1.jpg",
+    alt: "Signature Layer Haircut by Kalya Salon",
+    category: "haircut",
+    title: "Signature Soft Layer",
+    description: "Desain potongan layer bertekstur lembut untuk efek bervolume natural.",
+    featured: true,
+    width: 800,
+    height: 1000,
+  },
+  {
+    id: "gal-2",
+    src: "/images/gallery/coloring-1.jpg",
+    alt: "Ash Blonde Balayage by Kalya Salon",
+    category: "coloring",
+    title: "Ash Blonde Balayage",
+    description: "Gradasi warna abu-abu lembut dengan transisi halus tanpa garis batas.",
+    featured: true,
+    width: 800,
+    height: 1000,
+  },
+  {
+    id: "gal-3",
+    src: "/images/gallery/treatment-1.jpg",
+    alt: "Keratin Smooth Gloss Treatment Result",
+    category: "treatment",
+    title: "Keratin Gloss Transformation",
+    description: "Kilau sehat bercahaya setelah proses aplikasi protein keratin intensif.",
+    featured: true,
+    width: 800,
+    height: 1000,
+  },
+  {
+    id: "gal-4",
+    src: "/images/gallery/interior-1.jpg",
+    alt: "Kalya Salon Interior Ambiance",
+    category: "interior",
+    title: "Modern & Warm Ambiance",
+    description: "Ruang perawatan yang bersih, nyaman, berestetika tinggi dan menenangkan.",
+    featured: false,
+    width: 1200,
+    height: 800,
+  },
+];

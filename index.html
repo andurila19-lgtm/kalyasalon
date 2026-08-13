@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KALYA SALON MADIUN — Hair Design & Treatment | Premium Indonesian Salon</title>
+  <meta name="description" content="Kalya Salon Madiun - Premium hair design and treatment with warm, personal salon experience in Madiun. Elegant ambiance, professional hair care, affordable luxury.">
+  
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. NAVBAR (Sticky, Transparent to Warm Ivory Glassmorphism)
+       ========================================================================= -->
+  <header class="site-header" id="mainHeader">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" id="navLogo">
+        <span class="brand-name">KALYA SALON</span>
+        <span class="brand-tagline">Hair Design & Treatment</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" id="desktopNav">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#price-list" class="nav-link">Price List</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#location" class="nav-link">Location</a>
+      </nav>
+
+      <!-- Desktop CTA & Hamburger Trigger -->
+      <div class="nav-actions">
+        <button class="btn btn-primary" id="headerBookBtn" onclick="openBookingModal('General Appointment')">
+          Book Appointment
+        </button>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu & Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-nav-drawer" id="mobileDrawer">
+    <div>
+      <div class="brand-logo" style="margin-bottom: 32px;">
+        <span class="brand-name">KALYA SALON</span>
+        <span class="brand-tagline">Hair Design & Treatment</span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link" onclick="closeMobileMenu()">Home <span>&rarr;</span></a>
+        <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About <span>&rarr;</span></a>
+        <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services <span>&rarr;</span></a>
+        <a href="#price-list" class="mobile-nav-link" onclick="closeMobileMenu()">Price List <span>&rarr;</span></a>
+        <a href="#gallery" class="mobile-nav-link" onclick="closeMobileMenu()">Gallery <span>&rarr;</span></a>
+        <a href="#reviews" class="mobile-nav-link" onclick="closeMobileMenu()">Reviews <span>&rarr;</span></a>
+        <a href="#location" class="mobile-nav-link" onclick="closeMobileMenu()">Location <span>&rarr;</span></a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-gold" style="width: 100%;" onclick="closeMobileMenu(); openBookingModal('Mobile Menu')">
+        Book Appointment
+      </button>
+      <p style="font-size: 0.75rem; text-align: center; color: var(--c-muted-gray);">
+        Open Daily 09:00 – 20:00 • Madiun
+      </p>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. HERO SECTION (High-End Editorial Split Layout with Arch Image Frame)
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <!-- Left Editorial Content -->
+      <div class="hero-content">
+        <span class="eyebrow no-left">KALYA SALON • MADIUN</span>
+        <h1 class="hero-headline">
+          Your Beauty,<br>
+          <span class="highlight">Your Way.</span>
+        </h1>
+        <p class="hero-description">
+          Premium hair design and treatment with a warm and personal salon experience in Madiun. Designed for your everyday luxury and hair revitalization.
+        </p>
+
+        <!-- Rating Pill -->
+        <div class="hero-rating-badge">
+          <span class="stars-icon">★★★★★</span>
+          <span class="rating-score">4.8 / 5</span>
+          <span class="rating-count">284+ Google Reviews</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="openBookingModal('Hero Section')">
+            Book Appointment
+          </button>
+          <a href="#services" class="btn btn-outline">
+            View Services
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Arch Framed Salon Visual -->
+      <div class="hero-visual-wrapper">
+        <div class="arch-frame-outer">
+          <div class="arch-image-mask">
+            <img src="images/kalya_salon_interior_hero_1786647519325.jpg" alt="Kalya Salon Madiun Interior with Arched LED Mirrors and Soft Blush Pink Wall">
+          </div>
+          <!-- Subtle Floating Trust Tag -->
+          <div class="hero-floating-tag">
+            <div class="tag-icon">✦</div>
+            <div>
+              <div class="tag-title">Experience</div>
+              <div class="tag-highlight">Affordable Luxury</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. MINIMAL TRUST STATISTICS BAR
+       ========================================================================= -->
+  <section class="trust-bar-section" aria-label="Kalya Salon Trust & Statistics">
+    <div class="container trust-grid">
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">4.8 ★</div>
+        <div class="trust-stat-label">Google Rating</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">284+</div>
+        <div class="trust-stat-label">Verified Reviews</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">09:00–20:00</div>
+        <div class="trust-stat-label">Open Daily</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">Madiun</div>
+        <div class="trust-stat-label">East Java, ID</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. ABOUT SECTION (More Than Just A Salon)
+       ========================================================================= -->
+  <section class="section-padding" id="about">
+    <div class="container about-grid">
+      <!-- Left: Salon Image with Arch Profile & Floating Year Badge -->
+      <div class="about-image-column">
+        <div class="about-arch-image">
+          <img src="images/kalya_salon_reception_shelf_1786648591694.jpg" alt="Kalya Salon Reception Desk and Illuminated Hair Care Display Shelves">
+        </div>
+        <div class="about-experience-badge">
+          <span class="badge-year">Est.</span>
+          <span class="badge-sub">Madiun</span>
+        </div>
+      </div>
+
+      <!-- Right: Narrative & 4 Value Pillars -->
+      <div class="about-content-column">
+        <span class="eyebrow no-left">OUR PHILOSOPHY</span>
+        <h2 class="section-title">More Than Just A Salon</h2>
+        <p class="about-lead-text">
+          Di <strong>Kalya Salon Madiun</strong>, kami percaya bahwa setiap helai rambut memiliki keunikan tersendiri. Kami memadukan kehangatan pelayanan khas Indonesia dengan standar estetika modern untuk menghadirkan pengalaman perawatan rambut yang menenangkan, personal, dan terpercaya.
+        </p>
+
+        <!-- 4 Small Highlights with Minimalist Line Icons -->
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <div>
+              <h3 class="pillar-title">Friendly Service</h3>
+              <p class="pillar-desc">Pelayanan ramah, santun, dan penuh perhatian dari capster berpengalaman.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div>
+              <h3 class="pillar-title">Personal Consultation</h3>
+              <p class="pillar-desc">Analisis tekstur dan model rambut yang paling sesuai dengan karakter Anda.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <h3 class="pillar-title">Clean & Comfortable</h3>
+              <p class="pillar-desc">Ruangan ber-AC dengan interior blush pink, wangi lembut, dan higienis.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <h3 class="pillar-title">Professional Treatment</h3>
+              <p class="pillar-desc">Produk berkualitas tinggi yang aman dan merawat kilau alami rambut.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. CUSTOMER EXPERIENCE SECTION (4 Premium Editorial Cards)
+       ========================================================================= -->
+  <section class="section-padding experience-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">THE KALYA RITUAL</span>
+        <h2 class="section-title">A Salon Experience<br>You'll Want to Repeat</h2>
+        <p class="section-subtitle">
+          Setiap kunjungan dirancang untuk memberikan ketenangan pikiran dan transformasi rambut yang mempesona.
+        </p>
+      </div>
+
+      <div class="experience-grid">
+        <div class="experience-card">
+          <span class="exp-step-num">01</span>
+          <h3 class="exp-card-title">Friendly Service</h3>
+          <p class="exp-card-text">
+            Disambut dengan senyuman hangat dan keramahan staf yang siap mendengarkan preferensi gaya Anda sejak pertama melangkah masuk.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <span class="exp-step-num">02</span>
+          <h3 class="exp-card-title">Personal Consultation</h3>
+          <p class="exp-card-text">
+            Sesi diskusi santai mengenai kondisi rambut, rekomendasi potongan layer atau pewarnaan balayage yang pas untuk bentuk wajah Anda.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <span class="exp-step-num">03</span>
+          <h3 class="exp-card-title">Comfortable Space</h3>
+          <p class="exp-card-text">
+            Suasana tenang dengan pencahayaan LED hangat, cermin lengkung elegan, dan kursi salon ergonomis untuk kenyamanan maksimal.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <span class="exp-step-num">04</span>
+          <h3 class="exp-card-title">Worth Every Visit</h3>
+          <p class="exp-card-text">
+            Kombinasi hasil akhir rambut memukau, perawatan yang tahan lama, dan harga terjangkau yang membuat Anda ingin selalu kembali.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. SERVICES SECTION (Interactive Filter Tabs & Luxury Cards)
+       ========================================================================= -->
+  <section class="section-padding" id="services">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">OUR SIGNATURE MENU</span>
+        <h2 class="section-title">Tailored Hair Services</h2>
+        <p class="section-subtitle">
+          Pilihan perawatan lengkap mulai dari peremajaan helai rambut, styling modern, hingga pewarnaan berdimensi tinggi.
+        </p>
+      </div>
+
+      <!-- Service Tabs -->
+      <div class="service-tabs-wrapper">
+        <button class="service-tab-btn active" data-category="all">All Services</button>
+        <button class="service-tab-btn" data-category="hair-design">Hair Design</button>
+        <button class="service-tab-btn" data-category="hair-treatment">Hair Treatment</button>
+        <button class="service-tab-btn" data-category="wash-style">Wash & Style</button>
+      </div>
+
+      <!-- Service Cards Grid -->
+      <div class="services-cards-grid" id="serviceCardsContainer">
+        
+        <!-- Card 1: Hair Cutting -->
+        <div class="service-item-card" data-category="hair-design">
+          <div>
+            <span class="service-badge">Hair Design</span>
+            <h3 class="service-name">Signature Haircut & Texture</h3>
+            <p class="service-description">
+              Potongan presisi sesuai bentuk wajah, framing layer, face-contour cut, termasuk konsultasi bentuk styling.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 45.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Signature Haircut & Texture')">Book</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Hair Spa -->
+        <div class="service-item-card" data-category="hair-treatment">
+          <div>
+            <span class="service-badge">Hair Treatment</span>
+            <h3 class="service-name">Revitalizing Hair Spa</h3>
+            <p class="service-description">
+              Nutrisi mendalam untuk rambut kering dan rapuh dengan steam therapy lembut serta pijat relaksasi pundak.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 85.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Revitalizing Hair Spa')">Book</button>
+          </div>
+        </div>
+
+        <!-- Card 3: Creambath -->
+        <div class="service-item-card" data-category="hair-treatment">
+          <div>
+            <span class="service-badge">Hair Treatment</span>
+            <h3 class="service-name">Aromatherapy Creambath</h3>
+            <p class="service-description">
+              Perawatan tradisional khas salon dengan formula krim buah/avocado, pijat kepala menenangkan, dan relaksasi total.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 65.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Aromatherapy Creambath')">Book</button>
+          </div>
+        </div>
+
+        <!-- Card 4: Hair Coloring -->
+        <div class="service-item-card" data-category="hair-design">
+          <div>
+            <span class="service-badge">Hair Design</span>
+            <h3 class="service-name">Balayage & Dimensional Color</h3>
+            <p class="service-description">
+              Pewarnaan modern ash brown, caramel, atau natural tone tanpa merusak kilau rambut, dilengkapi gloss lock.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 175.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Balayage & Dimensional Color')">Book</button>
+          </div>
+        </div>
+
+        <!-- Card 5: Keratin & Smoothing -->
+        <div class="service-item-card" data-category="hair-treatment">
+          <div>
+            <span class="service-badge">Hair Treatment</span>
+            <h3 class="service-name">Silky Keratin Infusion</h3>
+            <p class="service-description">
+              Mengembalikan protein rambut, meluruskan dengan hasil jatuh natural yang lembut tanpa rasa kaku.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 220.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Silky Keratin Infusion')">Book</button>
+          </div>
+        </div>
+
+        <!-- Card 6: Wash & Blow Style -->
+        <div class="service-item-card" data-category="wash-style">
+          <div>
+            <span class="service-badge">Wash & Style</span>
+            <h3 class="service-name">Luxury Wash & Blow Dry</h3>
+            <p class="service-description">
+              Pencucian rambut dengan shampoo premium, kondisioner lembut, dan styling blowout bouncy tahan seharian.
+            </p>
+          </div>
+          <div class="service-card-footer">
+            <div class="service-price-block">
+              <span class="price-label">Starts From</span>
+              <span class="price-value">IDR 35.000</span>
+            </div>
+            <button class="service-book-btn" onclick="openBookingModal('Luxury Wash & Blow Dry')">Book</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. PRICE LIST SECTION (Luxury Salon Menu de Beauté)
+       ========================================================================= -->
+  <section class="section-padding price-list-section" id="price-list">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 2rem;">
+        <span class="eyebrow">TRANSPARENT & AFFORDABLE</span>
+        <h2 class="section-title">Menu De Beauté</h2>
+        <p class="section-subtitle">
+          Daftar harga transparan untuk seluruh layanan perawatan Kalya Salon Madiun.
+        </p>
+      </div>
+
+      <div class="price-menu-sheet">
+        <div class="price-menu-header">
+          <h3 style="font-family: var(--font-serif-heading); font-size: 1.6rem; color: var(--c-dark-brown);">KALYA SALON PRICING</h3>
+          <p style="font-size: 0.85rem; color: var(--c-champagne-gold); letter-spacing: 0.15em; text-transform: uppercase;">Hair Design & Treatment Menu</p>
+        </div>
+
+        <div class="price-categories-grid">
+          
+          <!-- Category 1: Hair Design -->
+          <div class="price-category-col">
+            <h4 class="price-cat-title">
+              Hair Design <span class="cat-accent">Cutting & Style</span>
+            </h4>
+            <div class="price-items-list">
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Potong Rambut Wanita</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">45K</span>
+                </div>
+                <span class="item-subtext">Termasuk konsultasi & penyesuaian bentuk wajah</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Potong + Cuci + Blow</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">75K</span>
+                </div>
+                <span class="item-subtext">Paket lengkap styling segar seketika</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Poni / Fringe Trim</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">20K</span>
+                </div>
+                <span class="item-subtext">Korean curtain bangs / classic bangs</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Potong Rambut Anak</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">35K</span>
+                </div>
+                <span class="item-subtext">Pelayanan ramah dan sabar untuk si kecil</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Wash & Dry -->
+          <div class="price-category-col">
+            <h4 class="price-cat-title">
+              Wash & Dry <span class="cat-accent">Shampoo & Blow</span>
+            </h4>
+            <div class="price-items-list">
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Cuci Rambut + Kering</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">35K</span>
+                </div>
+                <span class="item-subtext">Shampoo aromatik & pengeringan alami</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Cuci + Blow Natural / Bouncy</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">50K</span>
+                </div>
+                <span class="item-subtext">Blow in/out bervolume tahan lama</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Styling Catok / Curly Wave</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">60K</span>
+                </div>
+                <span class="item-subtext">Glamour waves atau sleek straight look</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Wash & Quick Scalp Massage</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">45K</span>
+                </div>
+                <span class="item-subtext">Relaksasi ringan pelepas penat</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Hair Treatment -->
+          <div class="price-category-col">
+            <h4 class="price-cat-title">
+              Hair Treatment <span class="cat-accent">Spa & Nourish</span>
+            </h4>
+            <div class="price-items-list">
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Creambath Tradisional</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">65K</span>
+                </div>
+                <span class="item-subtext">Pilihan varian alami + pijatan bahu</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Intensive Hair Spa</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">85K</span>
+                </div>
+                <span class="item-subtext">Nutrisi batang rambut kering/bercabang</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Hair Color Fashion/Balayage</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">175K+</span>
+                </div>
+                <span class="item-subtext">Sesuai panjang rambut & teknik bleaching</span>
+              </div>
+
+              <div class="price-line-item">
+                <div class="price-line-header">
+                  <span class="item-name">Smoothing Silk Keratin</span>
+                  <span class="item-dots-leader"></span>
+                  <span class="item-cost">220K+</span>
+                </div>
+                <span class="item-subtext">Lurus natural berkilau dan tidak lepek</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. FEATURED SERVICES ("Most Loved Treatments")
+       ========================================================================= -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">POPULAR FAVORITES</span>
+        <h2 class="section-title">Most Loved Treatments</h2>
+        <p class="section-subtitle">
+          Empat layanan terfavorit yang paling banyak direkomendasikan pelanggan setia Kalya Salon Madiun.
+        </p>
+      </div>
+
+      <div class="featured-grid">
+        <!-- Feature 1: Hair Spa -->
+        <div class="featured-card">
+          <div class="featured-card-bg">
+            <img src="images/kalya_hair_spa_treatment_1786648553891.jpg" alt="Luxury Hair Spa Creambath Treatment at Kalya Salon">
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="featured-tag">Deep Nourish</span>
+            <h3 class="featured-title">Hair Spa</h3>
+            <div class="featured-meta">
+              <span>Starts 85K</span>
+              <span class="featured-cta-link" onclick="openBookingModal('Hair Spa')">Book &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Creambath -->
+        <div class="featured-card">
+          <div class="featured-card-bg">
+            <img src="images/kalya_salon_wash_creambath_1786647827746.jpg" alt="Relaxing Creambath Washing Bed at Kalya Salon">
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="featured-tag">Relaxation</span>
+            <h3 class="featured-title">Creambath</h3>
+            <div class="featured-meta">
+              <span>Starts 65K</span>
+              <span class="featured-cta-link" onclick="openBookingModal('Creambath')">Book &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: Hair Cutting -->
+        <div class="featured-card">
+          <div class="featured-card-bg">
+            <img src="images/kalya_haircut_styling_1786648365885.jpg" alt="Precision Hair Cutting and Texturizing at Kalya Salon">
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="featured-tag">Precision Cut</span>
+            <h3 class="featured-title">Hair Cutting</h3>
+            <div class="featured-meta">
+              <span>Starts 45K</span>
+              <span class="featured-cta-link" onclick="openBookingModal('Hair Cutting')">Book &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 4: Hair Coloring -->
+        <div class="featured-card">
+          <div class="featured-card-bg">
+            <img src="images/kalya_hair_color_balayage_1786648571168.jpg" alt="Glossy Ash Caramel Balayage Hair Coloring Result">
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="featured-tag">Rich Balayage</span>
+            <h3 class="featured-title">Hair Coloring</h3>
+            <div class="featured-meta">
+              <span>Starts 175K</span>
+              <span class="featured-cta-link" onclick="openBookingModal('Hair Coloring')">Book &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. WHY KALYA SECTION (Editorial Proof)
+       ========================================================================= -->
+  <section class="section-padding" style="padding-top: 0;">
+    <div class="container">
+      <div class="why-kalya-box">
+        <div class="why-grid">
+          <div class="why-text-content">
+            <span class="eyebrow no-left">AUTHENTIC REPUTATION</span>
+            <h2 class="section-title" style="font-size: clamp(2rem, 3.2vw, 2.75rem);">Why Customers Keep Coming Back</h2>
+            <p>
+              Kami mengutamakan kepuasan Anda melalui perhatian pada setiap detail kecil: ketenangan ruangan berinterior blush pink dan marmer, konsultasi hangat yang tidak terburu-buru, serta hasil potongan maupun perawatan yang selalu memancarkan keindahan alami Anda.
+            </p>
+            <button class="btn btn-primary" onclick="openBookingModal('Why Kalya Section')">
+              Experience Kalya Today
+            </button>
+          </div>
+
+          <div class="why-stats-pills">
+            <div class="why-stat-card">
+              <div class="why-val">4.8★</div>
+              <div class="why-lbl">Google Rating</div>
+            </div>
+            <div class="why-stat-card">
+              <div class="why-val">284+</div>
+              <div class="why-lbl">Real Reviews</div>
+            </div>
+            <div class="why-stat-card">
+              <div class="why-val">09:00–20:00</div>
+              <div class="why-lbl">Daily Service</div>
+            </div>
+            <div class="why-stat-card">
+              <div class="why-val">Madiun</div>
+              <div class="why-lbl">Strategic Location</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. GALLERY SECTION (Masonry Layout with Filter Tabs)
+       ========================================================================= -->
+  <section class="section-padding" id="gallery">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">VISUAL LOOKBOOK</span>
+        <h2 class="section-title">The Kalya Gallery</h2>
+        <p class="section-subtitle">
+          Intip keindahan suasana salon kami dan beragam transformasi rambut pelanggan setia Kalya Salon Madiun.
+        </p>
+      </div>
+
+      <!-- Gallery Filter Tabs -->
+      <div class="gallery-filter-tabs">
+        <button class="gallery-filter-btn active" data-gallery-cat="all">All</button>
+        <button class="gallery-filter-btn" data-gallery-cat="salon">Salon</button>
+        <button class="gallery-filter-btn" data-gallery-cat="hair">Hair</button>
+        <button class="gallery-filter-btn" data-gallery-cat="treatment">Treatment</button>
+        <button class="gallery-filter-btn" data-gallery-cat="beauty">Beauty</button>
+      </div>
+
+      <!-- Masonry Grid: 3 cols desktop, 2 cols mobile -->
+      <div class="gallery-masonry-grid" id="galleryGrid">
+        
+        <div class="gallery-item arch-style" data-gallery-cat="salon">
+          <img src="images/kalya_salon_interior_hero_1786647519325.jpg" alt="Interior Salon Arched Mirrors LED">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Arched Mirror Styling Area</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-gallery-cat="hair">
+          <img src="images/kalya_hair_styling_model_1786648083152.jpg" alt="Model Hair Blowout Transformation">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Glossy Blowout & Layer Cut</span>
+          </div>
+        </div>
+
+        <div class="gallery-item arch-style" data-gallery-cat="treatment">
+          <img src="images/kalya_salon_wash_creambath_1786647827746.jpg" alt="Wash Station and Product Bar">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Hair Spa Wash Station</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-gallery-cat="treatment">
+          <img src="images/kalya_hair_spa_treatment_1786648553891.jpg" alt="Relaxing Hair Spa Creambath Head Massage">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Nourishing Hair Spa Session</span>
+          </div>
+        </div>
+
+        <div class="gallery-item arch-style" data-gallery-cat="beauty">
+          <img src="images/kalya_salon_reception_shelf_1786648591694.jpg" alt="Reception Counter and Marble Design">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Marble Reception & Care Bar</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-gallery-cat="hair">
+          <img src="images/kalya_hair_color_balayage_1786648571168.jpg" alt="Balayage Hair Color Waves Detail">
+          <div class="gallery-hover-overlay">
+            <span class="gallery-caption">Caramel Balayage Dimension</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. REVIEWS SECTION (Editorial Testimonials)
+       ========================================================================= -->
+  <section class="section-padding reviews-section" id="reviews">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">COMMUNITY VOICES</span>
+        <h2 class="section-title">Loved by Our Customers</h2>
+        <p class="section-subtitle">
+          4.8 out of 5 based on 284+ Google reviews. Suara tulus dari mereka yang telah merasakan kehangatan Kalya Salon.
+        </p>
+      </div>
+
+      <div class="reviews-slider-track">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div>
+            <div class="review-card-header">
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">DA</div>
+                <div>
+                  <h4 class="reviewer-name">Dina Anggraini</h4>
+                  <span class="reviewer-badge">✓ Google Review</span>
+                </div>
+              </div>
+              <span class="stars-icon">★★★★★</span>
+            </div>
+            <p class="review-body-text">
+              "Tempatnya bagus banget dan estetik, warna pink lembut bikin betah! Capster-nya sangat teliti waktu motong rambut dan ramah banget ngasih saran model yang pas sama wajahku. Hasilnya bener-bener memuaskan dan harganya affordable!"
+            </p>
+          </div>
+          <div class="review-card-footer">
+            <span class="review-service-tag">Haircut & Styling</span>
+            <span class="review-date">Google Maps</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div>
+            <div class="review-card-header">
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">RN</div>
+                <div>
+                  <h4 class="reviewer-name">Rina Nurhaliza</h4>
+                  <span class="reviewer-badge">✓ Google Review</span>
+                </div>
+              </div>
+              <span class="stars-icon">★★★★★</span>
+            </div>
+            <p class="review-body-text">
+              "Creambath dan hair spa di Kalya Salon juara! Pijatannya pas, ruangannya wangi dan bersih. Cermin lengkungnya cantik banget buat foto setelah selesai treatment. Pasti bakal langganan terus kalau ke Madiun."
+            </p>
+          </div>
+          <div class="review-card-footer">
+            <span class="review-service-tag">Hair Spa & Creambath</span>
+            <span class="review-date">Google Maps</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div>
+            <div class="review-card-header">
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">SW</div>
+                <div>
+                  <h4 class="reviewer-name">Siti Wahyuni</h4>
+                  <span class="reviewer-badge">✓ Google Review</span>
+                </div>
+              </div>
+              <span class="stars-icon">★★★★★</span>
+            </div>
+            <p class="review-body-text">
+              "Warna rambut balayage saya keluar natural banget tanpa bikin rambut kering. Pelayanannya sangat personal dan capsternya komunikatif banget saat konsultasi warna. Rekomendasi salon terbaik di Madiun!"
+            </p>
+          </div>
+          <div class="review-card-footer">
+            <span class="review-service-tag">Balayage Coloring</span>
+            <span class="review-date">Google Maps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. SOCIAL MEDIA SECTION ("Follow Kalya")
+       ========================================================================= -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">CONNECT WITH US</span>
+        <h2 class="section-title">Follow Kalya</h2>
+        <p class="section-subtitle">
+          Dapatkan inspirasi gaya rambut harian, tips perawatan, dan update promo terbaru kami.
+        </p>
+      </div>
+
+      <div class="social-grid">
+        <!-- Instagram Card -->
+        <a href="https://instagram.com/kalyasalonmadiun" target="_blank" rel="noopener noreferrer" class="social-banner-card">
+          <div class="social-info">
+            <div class="social-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </div>
+            <div>
+              <span class="social-channel-label">Instagram</span>
+              <h3 class="social-handle">@kalyasalonmadiun</h3>
+            </div>
+          </div>
+          <span class="btn btn-outline" style="padding: 10px 20px; font-size: 0.75rem;">Follow &rarr;</span>
+        </a>
+
+        <!-- TikTok Card -->
+        <a href="https://tiktok.com/@kalyasalon" target="_blank" rel="noopener noreferrer" class="social-banner-card">
+          <div class="social-info">
+            <div class="social-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </div>
+            <div>
+              <span class="social-channel-label">TikTok</span>
+              <h3 class="social-handle">KALYA SALON BEAUTYBAR</h3>
+            </div>
+          </div>
+          <span class="btn btn-outline" style="padding: 10px 20px; font-size: 0.75rem;">Follow &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. LOCATION & CONTACT SECTION ("Find Us in Madiun")
+       ========================================================================= -->
+  <section class="section-padding" id="location" style="background-color: var(--c-marble-white); border-top: 1px solid var(--c-gold-hairline);">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">OUR LOCATION</span>
+        <h2 class="section-title">Find Us in Madiun</h2>
+        <p class="section-subtitle">
+          Kunjungi studio salon kami yang nyaman dan mudah diakses di jantung kota Madiun.
+        </p>
+      </div>
+
+      <div class="location-grid">
+        <!-- Contact & Address Cards Stack -->
+        <div class="location-cards-stack">
+          <!-- Address -->
+          <div class="info-box-card">
+            <div class="info-icon-wrapper">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-detail">
+              <h4>Salon Address</h4>
+              <p>Kalya Salon, Madiun, Jawa Timur, Indonesia.<br>Area strategis & mudah ditemukan dengan fasilitas parkir nyaman.</p>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="info-box-card">
+            <div class="info-icon-wrapper">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="info-detail">
+              <h4>Opening Hours</h4>
+              <p>Senin – Minggu (Setiap Hari)<br><strong>09:00 – 20:00 WIB</strong></p>
+            </div>
+          </div>
+
+          <!-- WhatsApp Contact -->
+          <div class="info-box-card">
+            <div class="info-icon-wrapper">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="info-detail">
+              <h4>WhatsApp Reservation</h4>
+              <p>Konsultasi & janji temu mudah via WhatsApp.<br><a href="https://wa.me/?text=Halo%20Kalya%20Salon,%20saya%20ingin%20reservasi" target="_blank" style="color: var(--c-champagne-gold); font-weight: 600;">Hubungi Kami Langsung &rarr;</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps Frame -->
+        <div class="map-container-frame">
+          <iframe 
+            title="Kalya Salon Madiun Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.5501869818817!2d111.52044817478051!3d-7.624108892391462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79bf88c83a54b3%3A0x6b8137cf9d9b6264!2sMadiun%2C%20Madiun%20City%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. FINAL EMOTIONAL CTA SECTION
+       ========================================================================= -->
+  <section class="final-cta-section">
+    <div class="container final-cta-content">
+      <span class="eyebrow">YOUR TRANSFORMATION AWAITS</span>
+      <h2 class="final-cta-title">Ready for Your Next Look?</h2>
+      <p class="final-cta-desc">
+        Book your next beauty experience at Kalya Salon and let our team pamper you with high-quality hair care and serene comfort.
+      </p>
+      <div class="final-cta-btns">
+        <button class="btn btn-primary" onclick="openBookingModal('Final CTA')">
+          Book Appointment
+        </button>
+        <a href="#location" class="btn btn-outline">
+          Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       15. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <span class="brand-name">KALYA SALON</span>
+            <span class="brand-tagline">Hair Design & Treatment</span>
+          </div>
+          <p>
+            Salon kecantikan dan perawatan rambut terpercaya di Madiun dengan konsep modern feminine, suasana hangat, dan kemewahan yang terjangkau.
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#hero">Home</a></li>
+            <li class="footer-link-item"><a href="#about">About Kalya</a></li>
+            <li class="footer-link-item"><a href="#services">Services</a></li>
+            <li class="footer-link-item"><a href="#price-list">Price List</a></li>
+            <li class="footer-link-item"><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="footer-col-title">Treatments</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#services">Haircut & Styling</a></li>
+            <li class="footer-link-item"><a href="#services">Revitalizing Hair Spa</a></li>
+            <li class="footer-link-item"><a href="#services">Aromatherapy Creambath</a></li>
+            <li class="footer-link-item"><a href="#services">Balayage Coloring</a></li>
+            <li class="footer-link-item"><a href="#services">Silk Keratin Smoothing</a></li>
+          </ul>
+        </div>
+
+        <!-- Working Hours & Social -->
+        <div>
+          <h4 class="footer-col-title">Opening Hours</h4>
+          <ul class="footer-links-list">
+            <li style="font-size: 0.88rem; color: #BDB4AC;">Senin – Minggu</li>
+            <li style="font-size: 0.95rem; color: var(--c-soft-gold); font-weight: 600;">09:00 – 20:00 WIB</li>
+            <li style="margin-top: 14px; font-size: 0.88rem; color: #BDB4AC;">Madiun, Jawa Timur</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 KALYA SALON MADIUN. All rights reserved.
+        </div>
+        <div>
+          Feminine Luxury • Warm Indonesian Hospitality
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       16. MOBILE STICKY BOTTOM BOOKING BAR
+       ========================================================================= -->
+  <div class="mobile-sticky-cta">
+    <button class="btn btn-gold" onclick="openBookingModal('Mobile Sticky Bar')">
+      ✦ Book Appointment Now
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       17. INTERACTIVE BOOKING PREVIEW MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeBookingModal()" aria-label="Close dialog">&times;</button>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="eyebrow">RESERVATION</span>
+        <h3 style="font-family: var(--font-serif-heading); font-size: 1.6rem; color: var(--c-dark-brown); margin-bottom: 6px;">
+          Book Your Visit
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--c-muted-gray);">
+          Selected Service: <strong id="modalServiceName" style="color: var(--c-champagne-gold);">Hair Design & Treatment</strong>
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+        <div style="background: var(--c-marble-white); padding: 14px 18px; border-radius: 12px; border: 1px solid var(--c-gold-hairline);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-muted-gray); letter-spacing: 0.08em;">Salon Location</div>
+          <div style="font-weight: 600; color: var(--c-dark-brown);">Kalya Salon — Madiun, Jawa Timur</div>
+        </div>
+
+        <div style="background: var(--c-marble-white); padding: 14px 18px; border-radius: 12px; border: 1px solid var(--c-gold-hairline);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-muted-gray); letter-spacing: 0.08em;">Operational Hours</div>
+          <div style="font-weight: 600; color: var(--c-dark-brown);">Open Daily: 09:00 – 20:00 WIB</div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/?text=Halo%20Kalya%20Salon,%20saya%20ingin%20booking%20appointment" target="_blank" class="btn btn-gold" style="width: 100%; justify-content: center;">
+        Continue to WhatsApp Booking &rarr;
+      </a>
+      <p style="font-size: 0.72rem; text-align: center; color: var(--c-muted-gray); margin-top: 12px;">
+        Fast response from Kalya Salon reception team.
+      </p>
+    </div>
+  </div>
+
+  <!-- Javascript -->
+  <script src="app.js"></script>
+</body>
+</html>

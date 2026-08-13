@@ -1,0 +1,58 @@
+import { Review } from "@/types/review";
+
+export const reviewsData: Review[] = [
+  {
+    id: "rev-1",
+    customerName: "Dian Permatasari",
+    rating: 5,
+    text: "Potongan rambutnya sangat presisi dan pas banget dengan bentuk muka saya. Pelayanannya ramah, tempatnya bersih, wangi, dan estetik banget di Madiun!",
+    date: "2 minggu yang lalu",
+    serviceUsed: "Signature Haircut & Blow",
+    verified: true,
+  },
+  {
+    id: "rev-2",
+    customerName: "Rina Kusuma",
+    rating: 5,
+    text: "Treatment keratinnya juara! Rambut saya yang tadinya kasar dan ngembang sekarang jadi halus lembut banget dan gampang disisir. Recommended!",
+    date: "1 bulan yang lalu",
+    serviceUsed: "Keratin Smooth & Glow Treatment",
+    verified: true,
+  },
+  {
+    id: "rev-3",
+    customerName: "Natasya Anggraini",
+    rating: 5,
+    text: "Balayage di Kalya hasilnya smooth banget, gradasinya rapi dan rambut tetap sehat nggak kering sama sekali. Stylistnya sangat edukatif!",
+    date: "1 bulan yang lalu",
+    serviceUsed: "Modern Balayage & Highlight Dimension",
+    verified: true,
+  },
+  {
+    id: "rev-4",
+    customerName: "Siti Rahmawati",
+    rating: 5,
+    text: "Hair spa di sini bikin rileks maksimal. Pijatannya pas, aromaterapinya menenangkan, dan stafnya sangat profesional. Pasti bakal balik lagi.",
+    date: "2 bulan yang lalu",
+    serviceUsed: "Scalp Detox & Hair Spa Therapy",
+    verified: true,
+  },
+  {
+    id: "rev-5",
+    customerName: "Mega Putri Utami",
+    rating: 5,
+    text: "Suka banget sama pelayanan di Kalya. Sebelum potong dan treatment diajak konsultasi dulu dengan detail. Hasilnya selalu sesuai ekspektasi dan harganya terjangkau.",
+    date: "3 minggu yang lalu",
+    serviceUsed: "Hair Cut & Creambath",
+    verified: true,
+  },
+  {
+    id: "rev-6",
+    customerName: "Arum Wijayanti",
+    rating: 5,
+    text: "Tempatnya sangat nyaman, bersih, dan wanginya enak bikin rileks. Proses cuci rambut dan pijatannya juara banget. Sudah langganan ke sini.",
+    date: "1 bulan yang lalu",
+    serviceUsed: "Hair Spa & Blow Styling",
+    verified: true,
+  },
+];
