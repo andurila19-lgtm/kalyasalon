@@ -1,50 +1,381 @@
-/* Custom styling for Kalya Salon Admin Panel */
-/* Reset: prevent global site CSS from bleeding into Payload admin */
+/* ========================================
+   KALYA SALON — PREMIUM ADMIN PANEL THEME
+   ======================================== */
+
+/* Payload 3.0 CSS Custom Properties Override */
+
 :root {
+  /* Light theme (default) */
   --theme-bg: #FFFDFC;
+  --theme-text: #292522;
+  --theme-elevation-0: #FFFDFC;
+  --theme-elevation-50: #F9F6F3;
+  --theme-elevation-100: #F5F3EF;
+  --theme-elevation-150: #EDE8E2;
+  --theme-elevation-200: #E8D4D4;
+  --theme-elevation-250: #DCC8C8;
+  --theme-elevation-300: #C9A45C;
+  --theme-elevation-350: #B8944F;
+  --theme-elevation-400: #5A4635;
+  --theme-elevation-450: #4A3A2C;
+  --theme-elevation-500: #292522;
+  --theme-elevation-550: #1F1C19;
+  --theme-elevation-600: #151310;
+  --theme-elevation-650: #0C0A08;
+  --theme-elevation-700: #050403;
+  --theme-elevation-750: #020201;
+  --theme-elevation-800: #000000;
+  --theme-elevation-850: #000000;
+  --theme-elevation-900: #000000;
+  --theme-elevation-950: #000000;
+  --theme-elevation-1000: #000000;
+
+  /* Brand accent colors */
+  --theme-success-500: #4CAF50;
+  --theme-error-500: #E05252;
+  --theme-warning-500: #C9A45C;
+
+  /* Border radius */
+  --style-radius-s: 6px;
+  --style-radius-m: 10px;
+  --style-radius-l: 14px;
+
+  /* Font family */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Force Payload admin to use its own default styles, not the site's Tailwind tokens */
-[data-theme="light"] {
-  --theme-bg: #ffffff;
-  --theme-text: #1a1a1a;
-  --theme-input-bg: #ffffff;
-  color: #1a1a1a;
-  background: #ffffff;
-}
-
+/* Dark theme override */
 [data-theme="dark"] {
-  --theme-bg: #141414;
-  --theme-text: #e0e0e0;
-  --theme-input-bg: #1e1e1e;
-  color: #e0e0e0;
-  background: #141414;
+  --theme-bg: #1A1614;
+  --theme-text: #F5F3EF;
+  --theme-elevation-0: #1A1614;
+  --theme-elevation-50: #221E1B;
+  --theme-elevation-100: #2A2522;
+  --theme-elevation-150: #332E2A;
+  --theme-elevation-200: #3D3732;
+  --theme-elevation-250: #4A4239;
+  --theme-elevation-300: #C9A45C;
+  --theme-elevation-350: #D8B96C;
+  --theme-elevation-400: #E8D4D4;
+  --theme-elevation-450: #F3E7E7;
+  --theme-elevation-500: #F5F3EF;
+  --theme-elevation-550: #F9F6F3;
+  --theme-elevation-600: #FFFDFC;
 }
 
-/* Ensure all form labels and text in admin are always visible */
-.payload__modal-container,
-#payload-admin,
-[class*="field-type"] label,
-[class*="field-type"] .field-description,
-.form-submit .btn,
-.template-default,
-.dashboard,
-.account,
+/* ========================================
+   GLOBAL ADMIN STYLES
+   ======================================== */
+
+/* Admin panel wrapper */
+#app-content {
+  font-family: var(--font-body) !important;
+}
+
+/* Nav sidebar branding */
+.nav {
+  border-right: 1px solid var(--theme-elevation-150) !important;
+}
+
+.nav__brand {
+  padding: 20px 16px !important;
+}
+
+/* Nav group labels */
+.nav-group__label {
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--theme-elevation-300) !important;
+}
+
+/* Nav links */
+.nav-group .nav__link {
+  border-radius: var(--style-radius-s) !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-group .nav__link:hover {
+  background: var(--theme-elevation-100) !important;
+}
+
+.nav-group .nav__link.active {
+  background: var(--theme-elevation-150) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .nav-group .nav__link:hover {
+  background: var(--theme-elevation-100) !important;
+}
+
+[data-theme="dark"] .nav-group .nav__link.active {
+  background: var(--theme-elevation-150) !important;
+}
+
+/* ========================================
+   DASHBOARD CARDS
+   ======================================== */
+
+.dashboard {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 32px 24px !important;
+}
+
+.dashboard__label {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--theme-elevation-500) !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 2px solid var(--theme-elevation-300) !important;
+}
+
+.dashboard__card-list {
+  gap: 16px !important;
+}
+
+.card {
+  border-radius: var(--style-radius-m) !important;
+  border: 1px solid var(--theme-elevation-150) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  background: var(--theme-elevation-50) !important;
+}
+
+.card:hover {
+  border-color: var(--theme-elevation-300) !important;
+  box-shadow: 0 4px 20px rgba(201, 164, 92, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme="dark"] .card {
+  background: var(--theme-elevation-50) !important;
+  border-color: var(--theme-elevation-150) !important;
+}
+
+[data-theme="dark"] .card:hover {
+  border-color: var(--theme-elevation-300) !important;
+  box-shadow: 0 4px 20px rgba(201, 164, 92, 0.15) !important;
+}
+
+.card__title {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+  border-radius: var(--style-radius-s) !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.01em !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn--style-primary {
+  background: #5A4635 !important;
+  color: #FFFDFC !important;
+}
+
+.btn--style-primary:hover {
+  background: #4A3A2C !important;
+  box-shadow: 0 2px 12px rgba(90, 70, 53, 0.3) !important;
+}
+
+[data-theme="dark"] .btn--style-primary {
+  background: #C9A45C !important;
+  color: #1A1614 !important;
+}
+
+[data-theme="dark"] .btn--style-primary:hover {
+  background: #D8B96C !important;
+  box-shadow: 0 2px 12px rgba(201, 164, 92, 0.3) !important;
+}
+
+.btn--style-secondary {
+  border: 1px solid var(--theme-elevation-200) !important;
+  background: transparent !important;
+}
+
+.btn--style-secondary:hover {
+  border-color: var(--theme-elevation-300) !important;
+  background: var(--theme-elevation-50) !important;
+}
+
+/* ========================================
+   FORM FIELDS
+   ======================================== */
+
+.field-type {
+  margin-bottom: 20px !important;
+}
+
+.field-type label {
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  color: var(--theme-elevation-400) !important;
+}
+
+[data-theme="dark"] .field-type label {
+  color: var(--theme-elevation-450) !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+textarea,
+select,
+.react-select__control {
+  border-radius: var(--style-radius-s) !important;
+  border: 1px solid var(--theme-elevation-200) !important;
+  background: var(--theme-elevation-0) !important;
+  transition: all 0.2s ease !important;
+  font-family: var(--font-body) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.react-select__control--is-focused {
+  border-color: var(--theme-elevation-300) !important;
+  box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.15) !important;
+  outline: none !important;
+}
+
+/* ========================================
+   TABLE / LIST VIEW
+   ======================================== */
+
+.collection-list .table {
+  border-radius: var(--style-radius-m) !important;
+  overflow: hidden !important;
+  border: 1px solid var(--theme-elevation-150) !important;
+}
+
+.table .row:hover {
+  background: var(--theme-elevation-50) !important;
+}
+
+[data-theme="dark"] .table .row:hover {
+  background: var(--theme-elevation-100) !important;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.app-header {
+  border-bottom: 1px solid var(--theme-elevation-150) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ========================================
+   LOGIN / CREATE FIRST USER PAGE
+   ======================================== */
+
 .login,
 .create-first-user {
-  color: inherit;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #FFFDFC 0%, #F3E7E7 50%, #E8D4D4 100%) !important;
 }
 
-/* Override any Tailwind base resets that may bleed in */
-#payload-admin *,
-.template-default * {
-  border-color: revert;
+[data-theme="dark"] .login,
+[data-theme="dark"] .create-first-user {
+  background: linear-gradient(135deg, #1A1614 0%, #221E1B 50%, #2A2522 100%) !important;
 }
 
-#payload-admin input,
-#payload-admin select,
-#payload-admin textarea {
-  color: inherit;
-  background: var(--theme-input-bg, #fff);
-  border-color: #d0d0d0;
+.login__form,
+.create-first-user__form {
+  background: var(--theme-elevation-0) !important;
+  border-radius: var(--style-radius-l) !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--theme-elevation-150) !important;
+  padding: 40px !important;
+  max-width: 440px !important;
+  width: 100% !important;
+}
+
+[data-theme="dark"] .login__form,
+[data-theme="dark"] .create-first-user__form {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--theme-elevation-150) !important;
+}
+
+.login__header,
+.create-first-user__header {
+  text-align: center !important;
+  margin-bottom: 32px !important;
+}
+
+.login__header h1,
+.create-first-user__header h1 {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--theme-elevation-500) !important;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-elevation-200);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-elevation-300);
+}
+
+/* ========================================
+   MICRO-ANIMATIONS
+   ======================================== */
+
+.nav__link,
+.card,
+.btn,
+input,
+textarea,
+select {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Smooth page transitions */
+#app-content > * {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
