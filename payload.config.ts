@@ -3,6 +3,7 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { fileURLToPath } from "url";
+import sharp from "sharp";
 
 import { Users } from "./collections/Users";
 import { Services } from "./collections/Services";
@@ -20,6 +21,7 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SITE_URL || "https://kalyasalon.vercel.app",
+  sharp,
   admin: {
     user: Users.slug,
     importMap: {
@@ -58,7 +60,12 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "postgresql://postgres.placeholder:placeholder@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres",
+      connectionString: process.env.DATABASE_URI || "postgresql://postgres:YMJ2U%2AnhTtU%246We@db.pbjaeuhfubmwqczfmnli.supabase.co:5432/postgres",
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      max: 10,
     },
+    push: false,
   }),
 });
