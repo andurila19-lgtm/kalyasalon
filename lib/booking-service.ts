@@ -88,16 +88,25 @@ export async function createBookingAtomically(
   let durationMinutes = 60;
   let totalPrice = 135000;
   let priceDisplay = "Rp 135.000";
+  let serviceDbId: number | string | undefined;
 
   try {
     const payload = await getPayload({ config: configPromise });
-    try {
-      serviceDoc = await payload.findByID({
-        collection: "services",
-        id: serviceId,
-      });
-    } catch {
-      // Find by slug if id wasn't numeric/uuid
+
+    // First: try lookup by numeric ID (if serviceId is a number)
+    if (!isNaN(Number(serviceId))) {
+      try {
+        serviceDoc = await payload.findByID({
+          collection: "services",
+          id: serviceId,
+        });
+      } catch {
+        // Not a valid numeric ID, continue
+      }
+    }
+
+    // Second: search by slug field
+    if (!serviceDoc) {
       const search = await payload.find({
         collection: "services",
         where: { slug: { equals: serviceId } },
@@ -108,13 +117,29 @@ export async function createBookingAtomically(
       }
     }
 
+    // Third: search by name match (fuzzy fallback)
+    if (!serviceDoc) {
+      const fallbackStatic = servicesData.find((s) => s.id === serviceId);
+      if (fallbackStatic) {
+        const search = await payload.find({
+          collection: "services",
+          where: { name: { equals: fallbackStatic.name } },
+          limit: 1,
+        });
+        if (search.docs.length > 0) {
+          serviceDoc = search.docs[0];
+        }
+      }
+    }
+
     if (serviceDoc) {
+      serviceDbId = serviceDoc.id;
       serviceName = serviceDoc.name;
       durationMinutes = serviceDoc.durationMinutes || 60;
       totalPrice = serviceDoc.price || 135000;
       priceDisplay = serviceDoc.priceDisplay || `Rp ${totalPrice.toLocaleString("id-ID")}`;
     } else {
-      // Fallback to static catalog
+      // Fallback to static catalog (but we won't have a DB ID for the relationship)
       const fallback = servicesData.find((s) => s.id === serviceId);
       if (fallback) {
         serviceName = fallback.name;
@@ -158,10 +183,18 @@ export async function createBookingAtomically(
   // 4. Create Booking in Database with unique code
   const bookingCode = generateBookingCode(bookingDate);
 
+  // Ensure we have a valid database ID for the service relationship
+  if (!serviceDbId) {
+    return {
+      success: false,
+      message: "Layanan belum tersedia di database CMS. Silakan hubungi admin salon.",
+      error: "SERVICE_NOT_IN_DATABASE",
+    };
+  }
+
   try {
     const payload = await getPayload({ config: configPromise });
 
-    // Double check that code is unique
     const newBooking = await payload.create({
       collection: "bookings",
       data: {
@@ -169,7 +202,7 @@ export async function createBookingAtomically(
         customerName: customerName.trim(),
         customerPhone: cleanPhone,
         customerEmail: customerEmail ? customerEmail.trim() : undefined,
-        service: serviceDoc ? serviceDoc.id : serviceId,
+        service: Number(serviceDbId) || (serviceDbId as any),
         staff: staffId ? (Number(staffId) || (staffId as any)) : undefined,
         bookingDate,
         startTime,

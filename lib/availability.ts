@@ -28,10 +28,46 @@ export async function getAvailableSlots(params: {
 
   try {
     const payload = await getPayload({ config: configPromise });
-    const serviceDoc = await payload.findByID({
-      collection: "services",
-      id: serviceId,
-    });
+    let serviceDoc: any = null;
+
+    // Try numeric ID first
+    if (!isNaN(Number(serviceId))) {
+      try {
+        serviceDoc = await payload.findByID({
+          collection: "services",
+          id: serviceId,
+        });
+      } catch {
+        // Not a valid numeric ID
+      }
+    }
+
+    // Try slug lookup
+    if (!serviceDoc) {
+      const search = await payload.find({
+        collection: "services",
+        where: { slug: { equals: serviceId } },
+        limit: 1,
+      });
+      if (search.docs.length > 0) {
+        serviceDoc = search.docs[0];
+      }
+    }
+
+    // Try name match via static data
+    if (!serviceDoc) {
+      const fallbackStatic = servicesData.find((s) => s.id === serviceId);
+      if (fallbackStatic) {
+        const search = await payload.find({
+          collection: "services",
+          where: { name: { equals: fallbackStatic.name } },
+          limit: 1,
+        });
+        if (search.docs.length > 0) {
+          serviceDoc = search.docs[0];
+        }
+      }
+    }
 
     if (serviceDoc) {
       serviceName = (serviceDoc as any).name || serviceName;
