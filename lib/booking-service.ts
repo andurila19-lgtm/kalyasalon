@@ -152,7 +152,7 @@ export async function createBookingAtomically(
     console.error("[Booking Service] Failed to fetch service data:", error);
     return {
       success: false,
-      message: "Layanan tidak ditemukan dalam sistem database salon.",
+      message: "Layanan yang dipilih tidak ditemukan.",
       error: "SERVICE_NOT_FOUND",
     };
   }
@@ -187,8 +187,8 @@ export async function createBookingAtomically(
   if (!serviceDbId) {
     return {
       success: false,
-      message: "Layanan belum tersedia di database CMS. Silakan hubungi admin salon.",
-      error: "SERVICE_NOT_IN_DATABASE",
+      message: "Layanan sedang diperbarui. Silakan pilih layanan lain atau hubungi kami.",
+      error: "SERVICE_NOT_AVAILABLE",
     };
   }
 

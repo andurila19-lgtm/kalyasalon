@@ -564,7 +564,7 @@ export function InteractiveBooking({
           {slotsLoading ? (
             <div className="py-14 text-center space-y-3">
               <RefreshCw className="w-6 h-6 animate-spin mx-auto text-brand-champagne-gold" />
-              <p className="text-xs text-muted-foreground">Memeriksa ketersediaan slot realtime dari Supabase...</p>
+              <p className="text-xs text-muted-foreground">Memeriksa ketersediaan slot waktu salon...</p>
             </div>
           ) : availableSlots.length === 0 ? (
             <div className="py-10 text-center space-y-2 bg-card rounded-xl border border-border p-5 max-w-md mx-auto">

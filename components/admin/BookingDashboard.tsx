@@ -405,9 +405,9 @@ export function BookingDashboard() {
         </div>
 
         {loading ? (
-          <div className="kalya-calendar-loading">
-            <RefreshCw size={24} className="animate-spin text-kalya-gold" />
-            <p>Sinkronisasi jadwal database...</p>
+          <div className="kalya-loading-spinner-box">
+            <RefreshCw className="kalya-spin-icon" size={28} />
+            <p>Memuat kalender reservasi salon...</p>
           </div>
         ) : (
           <div className="kalya-hourly-grid">

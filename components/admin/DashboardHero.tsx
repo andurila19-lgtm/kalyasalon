@@ -47,7 +47,7 @@ export const DashboardHero: React.FC = () => {
             <div className="kalya-brand-subtitle-row">
               <span className="kalya-live-badge">
                 <span className="kalya-live-dot"></span>
-                ONLINE • SUPABASE POSTGRESQL
+                SISTEM AKTIF • REALTIME
               </span>
               {currentDate && <span className="kalya-date-text">{currentDate}</span>}
             </div>
@@ -338,7 +338,7 @@ export const DashboardHero: React.FC = () => {
         <div className="kalya-footer-divider"></div>
         <div className="kalya-footer-item">
           <ShieldCheck size={14} className="kalya-gold-icon" />
-          <span>Database: Supabase PostgreSQL Realtime</span>
+          <span>Status: Terhubung & Aktif Realtime</span>
         </div>
       </footer>
     </div>
