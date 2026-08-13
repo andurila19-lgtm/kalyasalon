@@ -2,6 +2,10 @@ import { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
   slug: "media",
+  labels: {
+    singular: "File Gambar",
+    plural: "Penyimpanan Media & Foto",
+  },
   upload: {
     staticDir: "public/media",
     imageSizes: [
@@ -24,6 +28,17 @@ export const Media: CollectionConfig = {
   admin: {
     useAsTitle: "alt",
     group: "Media & Foto",
+    description: "Seluruh foto dan gambar yang diunggah ke website Kalya Salon tersimpan di sini secara otomatis.",
+  },
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (data && !data.alt) {
+          data.alt = "Foto Kalya Salon Madiun";
+        }
+        return data;
+      },
+    ],
   },
   access: {
     read: () => true,
@@ -32,13 +47,20 @@ export const Media: CollectionConfig = {
     {
       name: "alt",
       type: "text",
-      label: "Deskripsi Alt Foto",
-      required: true,
+      label: "Keterangan Foto (Alt Text)",
+      defaultValue: "Foto Kalya Salon Madiun",
+      admin: {
+        placeholder: "Contoh: Interior Kalya Salon Madiun atau Hasil Cat Rambut Balayage",
+        description: "Boleh dikosongkan (otomatis diisi), atau tulis keterangan singkat isi gambar untuk SEO Google.",
+      },
     },
     {
       name: "caption",
       type: "text",
-      label: "Keterangan Foto",
+      label: "Catatan Tambahan (Opsional)",
+      admin: {
+        description: "Catatan internal pemilik salon mengenai foto ini.",
+      },
     },
   ],
 };

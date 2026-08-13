@@ -17,15 +17,18 @@ import {
   MapPin,
   Clock,
   Sparkles,
-  CheckCircle2,
-  Calendar,
+  BookOpen,
+  HelpCircle,
   Eye,
   Settings,
-  ChevronRight
+  ChevronRight,
+  CheckCircle2,
+  Lightbulb
 } from "lucide-react";
 
 export const DashboardHero: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<string>("");
+  const [activeGuideTab, setActiveGuideTab] = useState<string>("layanan");
 
   useEffect(() => {
     const now = new Date();
@@ -40,7 +43,7 @@ export const DashboardHero: React.FC = () => {
 
   return (
     <div className="kalya-executive-dashboard">
-      {/* TOP HEADER: BRAND + REALTIME STATUS + CTAs */}
+      {/* 1. TOP HEADER: BRAND + REALTIME STATUS + ACTION BUTTONS */}
       <header className="kalya-dash-header">
         <div className="kalya-dash-brand">
           <div className="kalya-monogram">KS</div>
@@ -56,7 +59,7 @@ export const DashboardHero: React.FC = () => {
               Kalya Salon <span className="kalya-gold-gradient">Executive Portal</span>
             </h1>
             <p className="kalya-dash-subtitle">
-              Pusat kendali operasional katalog layanan, tarif perawatan, portofolio galeri foto, dan ulasan pelanggan.
+              Panel pengelolaan mandiri untuk pemilik & staf Kalya Salon Madiun. Sangat mudah digunakan untuk update menu, tarif, galeri, dan ulasan.
             </p>
           </div>
         </div>
@@ -78,42 +81,42 @@ export const DashboardHero: React.FC = () => {
             className="kalya-action-btn secondary"
           >
             <MessageCircle size={15} />
-            <span>WhatsApp Salon</span>
+            <span>WhatsApp Reservasi</span>
           </a>
         </div>
       </header>
 
-      {/* QUICK METRIC STATS ROW */}
+      {/* 2. QUICK METRIC STATS ROW */}
       <div className="kalya-metrics-bar">
         <div className="kalya-metric-chip">
           <span className="kalya-chip-icon gold"><Scissors size={14} /></span>
-          <span className="kalya-chip-label">Layanan:</span>
-          <span className="kalya-chip-val">7 Treatment</span>
+          <span className="kalya-chip-label">Menu Layanan:</span>
+          <span className="kalya-chip-val">Siap Dikelola</span>
         </div>
         <div className="kalya-metric-chip">
           <span className="kalya-chip-icon brown"><Layers size={14} /></span>
-          <span className="kalya-chip-label">Kategori:</span>
-          <span className="kalya-chip-val">5 Kategori</span>
+          <span className="kalya-chip-label">Kategori Treatment:</span>
+          <span className="kalya-chip-val">Otomatis Terfilter</span>
         </div>
         <div className="kalya-metric-chip">
           <span className="kalya-chip-icon gold"><Star size={14} /></span>
-          <span className="kalya-chip-label">Google Rating:</span>
-          <span className="kalya-chip-val">4.8 / 5.0 (284+ Review)</span>
+          <span className="kalya-chip-label">Rating Google:</span>
+          <span className="kalya-chip-val">4.8★ (284+ Ulasan)</span>
         </div>
         <div className="kalya-metric-chip">
           <span className="kalya-chip-icon blush"><Clock size={14} /></span>
-          <span className="kalya-chip-label">Jam Buka:</span>
+          <span className="kalya-chip-label">Jam Operasional:</span>
           <span className="kalya-chip-val">09:00 - 20:00 WIB</span>
         </div>
       </div>
 
-      {/* SECTION 1: PRIMARY CATALOG & CONTENT MANAGEMENT (4 LUXURY CARDS) */}
+      {/* 3. PRIMARY CATALOG & CONTENT MANAGEMENT (4 LUXURY CARDS) */}
       <div className="kalya-section-title">
         <div className="kalya-title-left">
           <Sparkles size={16} className="kalya-gold-icon" />
-          <h2>Katalog & Manajemen Konten</h2>
+          <h2>Kelola Konten Utama Website</h2>
         </div>
-        <span className="kalya-pill-tag">Kontrol Utama</span>
+        <span className="kalya-pill-tag">Menu Cepat</span>
       </div>
 
       <div className="kalya-cards-grid">
@@ -125,16 +128,16 @@ export const DashboardHero: React.FC = () => {
             </div>
             <Link href="/admin/collections/services/create" className="kalya-pill-btn add">
               <Plus size={14} />
-              <span>Tambah Baru</span>
+              <span>+ Tambah Layanan</span>
             </Link>
           </div>
           <div className="kalya-card-info">
-            <h3>Menu Layanan & Tarif</h3>
-            <p>Atur nama perawatan, durasi, harga promo, dan foto ilustrasi layanan salon.</p>
+            <h3>Menu & Tarif Layanan</h3>
+            <p>Tambah perawatan baru, ubah harga promo, durasi waktu, dan foto contoh hasil rambut.</p>
           </div>
           <div className="kalya-card-actions">
             <Link href="/admin/collections/services" className="kalya-manage-link">
-              <span>Kelola Daftar Layanan</span>
+              <span>Buka Daftar Semua Layanan</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
@@ -148,16 +151,16 @@ export const DashboardHero: React.FC = () => {
             </div>
             <Link href="/admin/collections/categories/create" className="kalya-pill-btn add">
               <Plus size={14} />
-              <span>Tambah Baru</span>
+              <span>+ Tambah Kategori</span>
             </Link>
           </div>
           <div className="kalya-card-info">
             <h3>Kategori Treatment</h3>
-            <p>Kelola taksonomi (Haircut, Hair Spa, Keratin, Perming, Coloring) untuk filter menu.</p>
+            <p>Kelompokkan menu salon (Haircut, Hair Spa, Keratin, Perming, Coloring, Men’s Hair).</p>
           </div>
           <div className="kalya-card-actions">
             <Link href="/admin/collections/categories" className="kalya-manage-link">
-              <span>Kelola Kategori Menu</span>
+              <span>Buka Daftar Kategori</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
@@ -171,16 +174,16 @@ export const DashboardHero: React.FC = () => {
             </div>
             <Link href="/admin/collections/gallery/create" className="kalya-pill-btn add">
               <Plus size={14} />
-              <span>Upload Foto</span>
+              <span>+ Upload Foto Baru</span>
             </Link>
           </div>
           <div className="kalya-card-info">
             <h3>Portofolio Galeri</h3>
-            <p>Unggah foto hasil penataan gaya rambut, balayage, dan interior estetik salon.</p>
+            <p>Unggah foto hasil penataan rambut klien, hasil balayage, smoothing, dan interior salon.</p>
           </div>
           <div className="kalya-card-actions">
             <Link href="/admin/collections/gallery" className="kalya-manage-link">
-              <span>Buka Portofolio Galeri</span>
+              <span>Buka Semua Foto Galeri</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
@@ -194,41 +197,140 @@ export const DashboardHero: React.FC = () => {
             </div>
             <Link href="/admin/collections/reviews/create" className="kalya-pill-btn add">
               <Plus size={14} />
-              <span>Catat Ulasan</span>
+              <span>+ Catat Testimoni</span>
             </Link>
           </div>
           <div className="kalya-card-info">
             <h3>Ulasan & Testimoni</h3>
-            <p>Kelola ulasan Google Maps bintang 5 untuk meningkatkan kepercayaan calon pelanggan.</p>
+            <p>Input ulasan kepuasan pelanggan dari Google Maps untuk memperkuat citra salon.</p>
           </div>
           <div className="kalya-card-actions">
             <Link href="/admin/collections/reviews" className="kalya-manage-link">
-              <span>Kelola Semua Ulasan</span>
+              <span>Buka Daftar Ulasan</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* SECTION 2: SYSTEM & MEDIA MANAGEMENT */}
-      <div className="kalya-section-title">
-        <div className="kalya-title-left">
-          <Settings size={16} className="kalya-gold-icon" />
-          <h2>Aset Media & Pengaturan Akun</h2>
+      {/* 4. EASY OWNER CHEATSHEET & STEP-BY-STEP GUIDES (PANDUAN PEMILIK SALON) */}
+      <div className="kalya-guide-box">
+        <div className="kalya-guide-header">
+          <div className="kalya-guide-title">
+            <Lightbulb size={20} className="kalya-gold-icon" />
+            <div>
+              <h3>Panduan Praktis Pemilik Salon (Sangat Mudah Digunakan)</h3>
+              <p>Klik tab di bawah untuk melihat cara cepat mengupdate isi website:</p>
+            </div>
+          </div>
         </div>
-        <span className="kalya-pill-tag">Sistem & Media</span>
+
+        <div className="kalya-guide-tabs">
+          <button
+            type="button"
+            className={`kalya-tab-btn ${activeGuideTab === "layanan" ? "active" : ""}`}
+            onClick={() => setActiveGuideTab("layanan")}
+          >
+            ✂️ Cara Tambah Layanan / Ubah Harga
+          </button>
+          <button
+            type="button"
+            className={`kalya-tab-btn ${activeGuideTab === "galeri" ? "active" : ""}`}
+            onClick={() => setActiveGuideTab("galeri")}
+          >
+            📸 Cara Upload Foto ke Galeri
+          </button>
+          <button
+            type="button"
+            className={`kalya-tab-btn ${activeGuideTab === "ulasan" ? "active" : ""}`}
+            onClick={() => setActiveGuideTab("ulasan")}
+          >
+            ⭐ Cara Tambah Ulasan Pelanggan
+          </button>
+        </div>
+
+        <div className="kalya-guide-content">
+          {activeGuideTab === "layanan" && (
+            <div className="kalya-step-list">
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">1</span>
+                <div>
+                  <strong>Klik Tombol "+ Tambah Layanan"</strong> di kartu atas atau menu sidebar.
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">2</span>
+                <div>
+                  <strong>Isi Nama & Harga:</strong> Masukkan nama perawatan dan harga angka (misal: <code className="kalya-code">150000</code>). Sistem otomatis memformat menjadi <code className="kalya-code">Rp 150.000</code>!
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">3</span>
+                <div>
+                  <strong>Klik "Save" (Simpan):</strong> Layanan akan langsung aktif dan muncul di website seketika.
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeGuideTab === "galeri" && (
+            <div className="kalya-step-list">
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">1</span>
+                <div>
+                  <strong>Klik "+ Upload Foto Baru":</strong> Anda akan diarahkan ke form unggah foto.
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">2</span>
+                <div>
+                  <strong>Pilih Foto dari HP/Laptop:</strong> Klik kotak gambar, pilih foto hasil karya rambut klien Anda.
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">3</span>
+                <div>
+                  <strong>Pilih Kategori & Simpan:</strong> Pilih kategori (misal: <em>Coloring / Haircut</em>) lalu klik <strong>Save</strong>. Foto langsung tayang di galeri website!
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeGuideTab === "ulasan" && (
+            <div className="kalya-step-list">
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">1</span>
+                <div>
+                  <strong>Klik "+ Catat Testimoni":</strong> Buka formulir input ulasan baru.
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">2</span>
+                <div>
+                  <strong>Salin Nama & Komentar:</strong> Masukkan nama pelanggan dan salin komentar bintang 5 dari Google Maps.
+                </div>
+              </div>
+              <div className="kalya-step-item">
+                <span className="kalya-step-num">3</span>
+                <div>
+                  <strong>Simpan:</strong> Ulasan pelanggan akan langsung tampil di halaman review dan beranda!
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
+      {/* 5. SECONDARY SYSTEM & USER MANAGEMENT */}
       <div className="kalya-secondary-grid">
-        {/* MEDIA ASSETS */}
         <div className="kalya-compact-card">
           <div className="kalya-compact-left">
             <div className="kalya-icon-bubble blush small">
               <FolderOpen size={18} />
             </div>
             <div>
-              <h4>Penyimpanan Media (Uploads)</h4>
-              <p>Kelola seluruh file gambar, thumbnail, dan aset media website.</p>
+              <h4>Penyimpanan Media & Foto</h4>
+              <p>Kumpulan seluruh file foto dan gambar salon yang tersimpan.</p>
             </div>
           </div>
           <div className="kalya-compact-right">
@@ -239,15 +341,14 @@ export const DashboardHero: React.FC = () => {
           </div>
         </div>
 
-        {/* USER ACCESS */}
         <div className="kalya-compact-card">
           <div className="kalya-compact-left">
             <div className="kalya-icon-bubble gold small">
               <Users size={18} />
             </div>
             <div>
-              <h4>Pengaturan Akun & Akses Admin</h4>
-              <p>Kelola email, password, dan hak akses Administrator atau Staff.</p>
+              <h4>Akun Pemilik & Staf</h4>
+              <p>Kelola email & password login Admin atau akses Stylist.</p>
             </div>
           </div>
           <div className="kalya-compact-right">
@@ -259,11 +360,11 @@ export const DashboardHero: React.FC = () => {
         </div>
       </div>
 
-      {/* SECTION 3: QUICK WEBSITE DIRECT SHORTCUTS */}
+      {/* 6. WEBSITE DIRECT SHORTCUTS BAR */}
       <div className="kalya-website-bar">
         <div className="kalya-website-bar-title">
           <Eye size={16} className="kalya-gold-icon" />
-          <span>Navigasi Cepat Website Live:</span>
+          <span>Navigasi Langsung ke Halaman Website:</span>
         </div>
         <div className="kalya-website-links">
           <a href="https://kalyasalon.vercel.app/layanan" target="_blank" rel="noopener noreferrer">
@@ -284,7 +385,7 @@ export const DashboardHero: React.FC = () => {
         </div>
       </div>
 
-      {/* BOTTOM FOOTER STATUS */}
+      {/* 7. FOOTER STATUS */}
       <footer className="kalya-dash-footer">
         <div className="kalya-footer-item">
           <MapPin size={14} className="kalya-gold-icon" />
@@ -298,7 +399,7 @@ export const DashboardHero: React.FC = () => {
         <div className="kalya-footer-divider"></div>
         <div className="kalya-footer-item">
           <ShieldCheck size={14} className="kalya-gold-icon" />
-          <span>Security: Next.js 16 + Payload 3.0 + Supabase</span>
+          <span>Keamanan: Next.js 16 + Payload 3.0 + Supabase</span>
         </div>
       </footer>
     </div>

@@ -153,32 +153,72 @@ export interface User {
   collection: 'users';
 }
 /**
+ * Kelola menu potong rambut, perawatan spa, smoothing, pewarnaan, dan tarif salon.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
   id: number;
+  /**
+   * Ketikkan nama layanan yang ingin ditampilkan di website.
+   */
   name: string;
-  slug: string;
+  /**
+   * Pilih kategori untuk mempermudah pelanggan memfilter menu.
+   */
   category: number | Category;
+  /**
+   * Masukkan nominal angka saja tanpa titik atau tulisan Rp.
+   */
   price: number;
-  priceDisplay: string;
+  /**
+   * Boleh dikosongkan (akan otomatis dibuatkan dari harga di atas), atau isi jika ada keterangan tambahan seperti 'Mulai Rp 350.000'.
+   */
+  priceDisplay?: string | null;
+  /**
+   * Lama waktu pengerjaan perawatan di salon (dalam satuan menit).
+   */
   durationMinutes: number;
+  /**
+   * Jelaskan manfaat dan langkah perawatan untuk menarik minat pelanggan.
+   */
   description: string;
+  /**
+   * Centang jika layanan ini termasuk yang paling diminati atau sedang promo di halaman depan website.
+   */
   featured?: boolean | null;
+  /**
+   * Pilih foto dari komputer/HP untuk mempercantik tampilan kartu layanan di website.
+   */
   image?: (number | null) | Media;
+  /**
+   * Biarkan kosong, sistem akan mengisinya secara otomatis (misal: scalp-detox-spa).
+   */
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Kelompok jenis menu salon (contoh: Haircut & Styling, Hair Spa & Scalp, Hair Coloring, Perming & Smoothing).
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
   id: number;
+  /**
+   * Nama grup layanan yang akan muncul sebagai tab filter di menu.
+   */
   name: string;
-  slug: string;
+  /**
+   * Penjelasan ringkas mengenai kelompok perawatan ini.
+   */
   description?: string | null;
+  /**
+   * Boleh dikosongkan, sistem akan otomatis membuatnya (misal: haircut-styling).
+   */
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -221,30 +261,67 @@ export interface Media {
   };
 }
 /**
+ * Unggah portofolio foto hasil pengerjaan salon (potong rambut, pewarnaan, smoothing, atau suasana interior).
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "gallery".
  */
 export interface Gallery {
   id: number;
+  /**
+   * Beri judul singkat yang menarik untuk foto ini.
+   */
   title: string;
+  /**
+   * Klik untuk memilih foto dari galeri HP atau drag & drop file gambar (JPG / PNG / WEBP).
+   */
   image: number | Media;
+  /**
+   * Pilih kategori agar foto masuk ke tab filter yang sesuai di halaman Galeri website.
+   */
   category: 'haircut' | 'coloring' | 'treatment' | 'interior';
+  /**
+   * Cerita singkat tentang hasil pengerjaan atau teknik yang digunakan.
+   */
   description?: string | null;
+  /**
+   * Centang jika foto ini adalah salah satu karya terbaik yang ingin langsung dilihat pengunjung di beranda.
+   */
   featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Kelola ulasan kepuasan pelanggan yang diambil dari Google Maps atau testimoni langsung.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews".
  */
 export interface Review {
   id: number;
+  /**
+   * Nama pelanggan yang memberikan ulasan.
+   */
   customerName: string;
-  rating: number;
+  /**
+   * Pilih jumlah bintang penilaian dari pelanggan.
+   */
+  rating: '5' | '4' | '3';
+  /**
+   * Salin isi komentar atau testimoni asli dari pelanggan.
+   */
   text: string;
+  /**
+   * Jenis perawatan yang dicoba oleh pelanggan (opsional tapi bagus untuk referensi pembaca).
+   */
   serviceUsed?: string | null;
+  /**
+   * Kapan ulasan ini diberikan (misal: '2 hari yang lalu' atau '1 bulan yang lalu').
+   */
   date?: string | null;
+  /**
+   * Centang untuk menampilkan lencana centang hijau 'Ulasan Asli Terverifikasi'.
+   */
   verified?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -369,7 +446,6 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ServicesSelect<T extends boolean = true> {
   name?: T;
-  slug?: T;
   category?: T;
   price?: T;
   priceDisplay?: T;
@@ -377,6 +453,7 @@ export interface ServicesSelect<T extends boolean = true> {
   description?: T;
   featured?: T;
   image?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -386,8 +463,8 @@ export interface ServicesSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
-  slug?: T;
   description?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,10 +1,7 @@
 /* ==========================================================================
    KALYA SALON — MASTER LUXURY CMS ADMIN STYLING & COMPLETE REDESIGN
-   ========================================================================== */
+   ========================================================================= */
 
-/* --------------------------------------------------------------------------
-   1. COLOR SYSTEM & CSS TOKENS
-   -------------------------------------------------------------------------- */
 :root {
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -21,7 +18,6 @@
   --kalya-text-main: #FAF8F5;
   --kalya-text-muted: #A89F91;
 
-  /* Theme tokens */
   --theme-bg: #12100E;
   --theme-text: #FAF8F5;
   --theme-input-bg: #1C1814;
@@ -62,9 +58,7 @@ body, #app-content, .template-default, .dashboard {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --------------------------------------------------------------------------
-   2. HIDE DEFAULT PAYLOAD COLLECTION LIST (ELIMINATE GAMBAR 2)
-   -------------------------------------------------------------------------- */
+/* Hide Default Payload Collection List */
 .dashboard > .dashboard__group,
 .dashboard > .dashboard__label,
 .dashboard > .dashboard__card-list,
@@ -77,20 +71,17 @@ body, #app-content, .template-default, .dashboard {
   display: none !important;
 }
 
-/* Keep only our custom dashboard */
 .dashboard {
   max-width: 1240px !important;
   margin: 0 auto !important;
   padding: 24px 28px !important;
 }
 
-/* --------------------------------------------------------------------------
-   3. EXECUTIVE DASHBOARD WRAPPER & HEADER
-   -------------------------------------------------------------------------- */
+/* Executive Dashboard */
 .kalya-executive-dashboard {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
   width: 100%;
 }
 
@@ -99,7 +90,7 @@ body, #app-content, .template-default, .dashboard {
   background: linear-gradient(135deg, #241D17 0%, #191410 50%, #100C09 100%);
   border: 1px solid var(--kalya-gold-border);
   border-radius: 16px;
-  padding: 30px 32px;
+  padding: 28px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,9 +236,7 @@ body, #app-content, .template-default, .dashboard {
   transform: translateY(-2px);
 }
 
-/* --------------------------------------------------------------------------
-   4. METRICS STRIP
-   -------------------------------------------------------------------------- */
+/* Metrics Bar */
 .kalya-metrics-bar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -306,15 +295,13 @@ body, #app-content, .template-default, .dashboard {
   margin-left: auto;
 }
 
-/* --------------------------------------------------------------------------
-   5. SECTION TITLES & HEADINGS
-   -------------------------------------------------------------------------- */
+/* Section Titles */
 .kalya-section-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 0px;
 }
 
 .kalya-title-left {
@@ -347,9 +334,7 @@ body, #app-content, .template-default, .dashboard {
   border-radius: 9999px;
 }
 
-/* --------------------------------------------------------------------------
-   6. PRIMARY LUXURY CARDS GRID (4 MAIN CARDS)
-   -------------------------------------------------------------------------- */
+/* Cards Grid */
 .kalya-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -507,9 +492,120 @@ body, #app-content, .template-default, .dashboard {
   transform: translateX(2px);
 }
 
-/* --------------------------------------------------------------------------
-   7. SECONDARY COMPACT CARDS
-   -------------------------------------------------------------------------- */
+/* Interactive Owner Guide Box */
+.kalya-guide-box {
+  background: var(--kalya-card-bg);
+  border: 1px solid var(--kalya-gold-border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  margin-top: 4px;
+}
+
+.kalya-guide-header {
+  margin-bottom: 16px;
+}
+
+.kalya-guide-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.kalya-guide-title h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--kalya-text-main);
+  margin: 0 0 4px 0;
+}
+
+.kalya-guide-title p {
+  font-size: 0.82rem;
+  color: var(--kalya-text-muted);
+  margin: 0;
+}
+
+.kalya-guide-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--kalya-card-border);
+  padding-bottom: 12px;
+}
+
+.kalya-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--kalya-card-border);
+  color: var(--kalya-text-main);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.kalya-tab-btn:hover {
+  background: rgba(201, 164, 92, 0.15);
+  border-color: var(--kalya-gold-border);
+}
+
+.kalya-tab-btn.active {
+  background: var(--kalya-gold);
+  border-color: var(--kalya-gold);
+  color: #140E0A !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(201, 164, 92, 0.3);
+}
+
+.kalya-guide-content {
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--kalya-card-border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.kalya-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kalya-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--kalya-text-main);
+}
+
+.kalya-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--kalya-gold);
+  color: #140E0A;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.kalya-code {
+  background: rgba(201, 164, 92, 0.2);
+  color: var(--kalya-gold);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.82rem;
+}
+
+/* Secondary Compact Cards */
 .kalya-secondary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -553,9 +649,7 @@ body, #app-content, .template-default, .dashboard {
   margin: 0;
 }
 
-/* --------------------------------------------------------------------------
-   8. WEBSITE DIRECT SHORTCUTS BAR
-   -------------------------------------------------------------------------- */
+/* Website Shortcuts Bar */
 .kalya-website-bar {
   background: rgba(201, 164, 92, 0.08);
   border: 1px solid var(--kalya-gold-border);
@@ -601,9 +695,7 @@ body, #app-content, .template-default, .dashboard {
   color: #1A140E !important;
 }
 
-/* --------------------------------------------------------------------------
-   9. FOOTER STATUS
-   -------------------------------------------------------------------------- */
+/* Footer Status */
 .kalya-dash-footer {
   border-top: 1px solid var(--kalya-card-border);
   padding-top: 18px;
