@@ -263,30 +263,30 @@ export function InteractiveBooking({
   ];
 
   return (
-    <div ref={containerRef} className={cn("w-full mx-auto", isModal ? "max-w-3xl" : "max-w-3xl px-3 sm:px-6 py-4 sm:py-8")}>
+    <div ref={containerRef} className={cn("w-full max-w-full min-w-0 overflow-x-hidden box-border", isModal ? "p-0" : "max-w-3xl px-2 sm:px-6 py-4 sm:py-8")}>
       {/* STEP PROGRESS INDICATOR (Steps 1 to 5) */}
       {step < 6 && (
-        <div className="mb-6 sm:mb-8 bg-card/60 backdrop-blur-sm border border-border/70 rounded-2xl p-3 sm:p-5 shadow-xs">
-          {/* Mobile Current Step Header */}
-          <div className="flex sm:hidden items-center justify-between mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-dark-brown">
+        <div className="mb-4 sm:mb-8 bg-card/60 backdrop-blur-sm border border-border/70 rounded-2xl p-3 sm:p-5 shadow-xs w-full min-w-0 overflow-hidden">
+          {/* Mobile Current Step Header (Only on mobile) */}
+          <div className="flex sm:hidden items-center justify-between mb-2 w-full min-w-0">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-dark-brown shrink-0">
               Langkah {step} dari 5:
             </span>
-            <span className="text-xs font-bold text-foreground">
+            <span className="text-xs font-bold text-foreground truncate pl-2">
               {stepTitles[step - 1]?.label}
             </span>
           </div>
 
-          {/* Desktop 5-Step Circles */}
-          <div className="flex items-center justify-between max-w-xl mx-auto px-1 sm:px-2">
+          {/* Desktop 5-Step Circles (Strictly hidden on mobile) */}
+          <div className="hidden sm:flex items-center justify-between max-w-xl mx-auto px-2 w-full min-w-0">
             {stepTitles.map((s) => {
               const isCurrent = step === s.num;
               const isPast = step > s.num;
               return (
-                <div key={s.num} className="flex flex-col items-center flex-1">
+                <div key={s.num} className="flex flex-col items-center flex-1 min-w-0">
                   <div
                     className={cn(
-                      "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-bold transition-all",
+                      "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all",
                       isCurrent && "bg-brand-dark-brown text-white ring-3 ring-brand-champagne-gold/40 shadow-xs scale-105",
                       isPast && "bg-brand-champagne-gold text-brand-charcoal font-bold",
                       !isCurrent && !isPast && "bg-secondary text-muted-foreground"
@@ -296,7 +296,7 @@ export function InteractiveBooking({
                   </div>
                   <span
                     className={cn(
-                      "text-[10px] sm:text-[11px] mt-1 font-medium transition-colors hidden sm:block",
+                      "text-[11px] mt-1 font-medium transition-colors text-center truncate w-full px-0.5",
                       isCurrent && "text-brand-dark-brown font-bold",
                       isPast && "text-brand-charcoal",
                       !isCurrent && !isPast && "text-muted-foreground"
@@ -309,8 +309,8 @@ export function InteractiveBooking({
             })}
           </div>
 
-          {/* Progress Bar */}
-          <div className="w-full bg-secondary h-1.5 rounded-full mt-2.5 sm:mt-3 overflow-hidden max-w-xl mx-auto">
+          {/* Progress Bar (Visible on all screens) */}
+          <div className="w-full bg-secondary h-1.5 rounded-full mt-1.5 sm:mt-3 overflow-hidden max-w-xl mx-auto">
             <div
               className="bg-brand-champagne-gold h-full transition-all duration-300 ease-out"
               style={{ width: `${((step - 1) / 4) * 100}%` }}
